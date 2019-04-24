@@ -74,3 +74,5 @@ gem 'bootstrap', '~> 4.0'
 gem 'resque', '~> 2.0'
 
 gem 'highcharts-rails', '~> 6.0', '>= 6.0.3'
+
+gem 'chart-js-rails', '~> 0.0.9'
