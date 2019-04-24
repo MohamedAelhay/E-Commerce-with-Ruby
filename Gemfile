@@ -68,3 +68,5 @@ gem 'activeadmin', '~> 0.6.6'
 gem 'cancancan', '~> 1.15'
 
 gem 'devise', '~> 4.6', '>= 4.6.2'
+
+gem 'bootstrap', '~> 4.0'
