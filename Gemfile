@@ -63,7 +63,7 @@ gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
 
 # Added Gems
 
-gem 'activeadmin', '~> 0.6.6'
+gem 'activeadmin', '~> 2.0.0.rc2'
 
 gem 'cancancan', '~> 1.15'
 
