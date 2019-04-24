@@ -70,3 +70,5 @@ gem 'cancancan', '~> 1.15'
 gem 'devise', '~> 4.6', '>= 4.6.2'
 
 gem 'bootstrap', '~> 4.0'
+
+gem 'resque', '~> 2.0'
