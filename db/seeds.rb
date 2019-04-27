@@ -27,13 +27,13 @@ end
 
 10.times do
     Product.create([{
-        brand_id: 20,
-        category_id: 10,
+        brand_id: 1,
+        category_id: 1,
         store_id: 1,
         title: Faker::Device.model_name,
         description: Faker::Lorem.sentence,
         image: Faker::Avatar.image("my-own-slug", "50x50", "jpg"),
         price: Faker::Commerce.price,
-        quantity: 10    
+        quantity: rand(1..100) 
     }])
 end
