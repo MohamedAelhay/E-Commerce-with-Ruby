@@ -33,8 +33,8 @@ class DeviseCreateUsers < ActiveRecord::Migration[5.2]
       # t.datetime :locked_at
       #custom attribute
 
-      t.string :user_name,              null: false
-      t.string :role_type              
+      t.string :username,              null: false
+      t.string :role_type,             null: false, default: "Buyer"
       t.timestamps null: false
     end
 
