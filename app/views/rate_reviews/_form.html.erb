@@ -1,0 +1,37 @@
+<%= form_with(model: rate_review, local: true) do |form| %>
+  <% if rate_review.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(rate_review.errors.count, "error") %> prohibited this rate_review from being saved:</h2>
+
+      <ul>
+      <% rate_review.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= form.label :product_id %>
+    <%= form.text_field :product_id %>
+  </div>
+
+  <div class="field">
+    <%= form.label :user_id %>
+    <%= form.text_field :user_id %>
+  </div>
+
+  <div class="field">
+    <%= form.label :rate %>
+    <%= form.number_field :rate %>
+  </div>
+
+  <div class="field">
+    <%= form.label :review %>
+    <%= form.text_area :review %>
+  </div>
+
+  <div class="actions">
+    <%= form.submit %>
+  </div>
+<% end %>

@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  resources :rate_reviews
   resources :order_products
   resources :user_coupons
   resources :orders

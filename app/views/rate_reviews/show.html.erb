@@ -1,0 +1,24 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Product:</strong>
+  <%= @rate_review.product %>
+</p>
+
+<p>
+  <strong>User:</strong>
+  <%= @rate_review.user %>
+</p>
+
+<p>
+  <strong>Rate:</strong>
+  <%= @rate_review.rate %>
+</p>
+
+<p>
+  <strong>Review:</strong>
+  <%= @rate_review.review %>
+</p>
+
+<%= link_to 'Edit', edit_rate_review_path(@rate_review) %> |
+<%= link_to 'Back', rate_reviews_path %>
