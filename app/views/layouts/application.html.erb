@@ -5,17 +5,11 @@
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
 
-    <%= render 'layouts/styles' %>
+    <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
   </head>
 
   <body>
-    
-    <div class="super_container">
-      <%= render 'layouts/header' %>
-        <%= yield %>
-      <%= render 'layouts/footer' %>
-    </div>
-
-    <%= render 'layouts/scripts' %>
+    <%= yield %>
   </body>
 </html>

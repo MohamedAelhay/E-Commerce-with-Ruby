@@ -1,6 +1,4 @@
 Rails.application.routes.draw do
-
-  #root "product#index"
   resources :rate_reviews
   resources :order_products
   resources :user_coupons

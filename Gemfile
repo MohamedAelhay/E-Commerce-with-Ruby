@@ -78,9 +78,3 @@ gem 'highcharts-rails', '~> 6.0', '>= 6.0.3'
 gem 'chart-js-rails', '~> 0.0.9'
 
 gem 'jquery-rails'
-
-gem "font-awesome-rails"
-
-gem 'popper_js', '~> 1.14.5'
-
-gem 'flex-slider-rails'
