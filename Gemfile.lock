@@ -316,8 +316,8 @@ DEPENDENCIES
   chromedriver-helper
   coffee-rails (~> 4.2)
   devise (~> 4.6, >= 4.6.2)
-  font-awesome-sass (~> 5.8.1)
   faker (~> 1.9, >= 1.9.3)
+  font-awesome-sass (~> 5.8.1)
   highcharts-rails (~> 6.0, >= 6.0.3)
   jbuilder (~> 2.5)
   jquery-rails
