@@ -3,7 +3,12 @@ Rails.application.routes.draw do
   resources :order_products
   resources :user_coupons
   resources :orders
-  resources :products
+  resources :products do
+    collection do
+      get :search
+    end
+  end
+
   resources :coupons
   resources :stores
   resources :categories
