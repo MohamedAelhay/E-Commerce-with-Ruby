@@ -1,3 +1,41 @@
+
+	<!-- start banner Area -->
+	<section class="banner-area">
+		<div class="container">
+			<div class="row fullscreen align-items-center justify-content-start">
+				<div class="col-lg-12">
+					<div class="active-banner-slider owl-carousel">
+          <% @new_products.each do |new_product| %>
+          <!-- single-slide -->
+						<div class="row single-slide align-items-center d-flex">
+							<div class="col-lg-5 col-md-6">
+								<div class="banner-content">
+									<h1><%= new_product.title %></h1>
+									<p><%= new_product.description %> .</p>
+									<div class="add-bag d-flex align-items-center">
+										<a class="add-btn" href=""><span class="lnr lnr-cross"></span></a>
+										<span class="add-text text-uppercase">Add to Bag</span>
+									</div>
+								</div>
+							</div>
+							<div class="col-lg-7">
+								<div class="banner-img">
+									<img class="img-fluid" src="img/banner/banner-img.png" alt="">
+								</div>
+							</div>
+            </div>
+            <% end %>
+					</div>
+				</div>
+			</div>
+		</div>
+	</section>
+	<!-- End banner Area -->
+		
+
+
+
+
 <!-- start product Area -->
 <section class="owl-carousel active-product-area section_gap">
 	<!-- single product slide -->
@@ -50,4 +88,5 @@
           </div>
       </div>
 	</div>
-<% end %>
+  <% end %>
+</section>
