@@ -113,18 +113,6 @@ ActiveRecord::Schema.define(version: 2019_05_02_193842) do
     t.index ["user_id"], name: "index_rate_reviews_on_user_id"
   end
 
-  create_table "searches", options: "ENGINE=InnoDB DEFAULT CHARSET=latin1", force: :cascade do |t|
-    t.string "keyword"
-    t.integer "category_id"
-    t.integer "brand_id"
-    t.integer "product_id"
-    t.integer "store_id"
-    t.decimal "min_price", precision: 10
-    t.decimal "max_price", precision: 10
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-  end
-
   create_table "stores", options: "ENGINE=InnoDB DEFAULT CHARSET=latin1", force: :cascade do |t|
     t.bigint "user_id"
     t.string "name"
