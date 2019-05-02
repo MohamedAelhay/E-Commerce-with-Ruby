@@ -5,6 +5,8 @@ class ProductsController < ApplicationController
   # GET /products.json
   def index
     @products = Product.all
+    @categories = Category.all
+    @new_products = Product.last(5)
   end
 
   # GET /products/1
@@ -36,6 +38,16 @@ class ProductsController < ApplicationController
       end
     end
   end
+
+  #Search product
+  def search
+    if params[:search].blank? 
+      @products = Product.all
+    else
+      @products = Product.search(params)
+    end
+  end
+
 
   # PATCH/PUT /products/1
   # PATCH/PUT /products/1.json
