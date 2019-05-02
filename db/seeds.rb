@@ -27,8 +27,8 @@ end
 
 10.times do
     Product.create([{
-        brand_id: 1,
-        category_id: 1,
+        brand_id: rand(1..10),
+        category_id: rand(1..10),
         store_id: 1,
         title: Faker::Device.model_name,
         description: Faker::Lorem.sentence,

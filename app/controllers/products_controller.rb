@@ -39,6 +39,16 @@ class ProductsController < ApplicationController
     end
   end
 
+  #Search product
+  def search
+    if params[:search].blank? 
+      @products = Product.all
+    else
+      @products = Product.search(params)
+    end
+  end
+
+
   # PATCH/PUT /products/1
   # PATCH/PUT /products/1.json
   def update
