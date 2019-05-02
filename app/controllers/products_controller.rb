@@ -1,4 +1,6 @@
 class ProductsController < ApplicationController
+  caches_page :show
+  cashe_sweeper :product_sweeper  
   before_action :set_product, only: [:show, :edit, :update, :destroy]
 
   # GET /products
