@@ -66,7 +66,7 @@ gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
 gem 'font-awesome-sass', '~> 5.8.1'
 gem 'activeadmin', '~> 2.0.0.rc2'
 gem 'draper'
-
+gem 'pundit'
 gem 'cancancan', '~> 1.15'
 
 gem 'devise', '~> 4.6', '>= 4.6.2'
