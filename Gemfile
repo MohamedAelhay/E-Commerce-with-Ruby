@@ -80,3 +80,5 @@ gem 'highcharts-rails', '~> 6.0', '>= 6.0.3'
 gem 'chart-js-rails', '~> 0.0.9'
 
 gem 'jquery-rails'
+
+gem 'actionpack-page_caching'
