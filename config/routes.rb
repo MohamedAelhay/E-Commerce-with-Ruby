@@ -1,18 +1,22 @@
 Rails.application.routes.draw do
+  devise_for :admin_users, ActiveAdmin::Devise.config
+  ActiveAdmin.routes(self)
   resources :rate_reviews
   resources :order_products
-  resources :user_coupons
   resources :orders
+  resources :products
+  namespace :admin do
+    resources :coupons
+    resources :stores
+    resources :categories
+    resources :brands
+    resources :user_coupons
+  end
   resources :products do
     collection do
       get :search
     end
   end
-
-  resources :coupons
-  resources :stores
-  resources :categories
-  resources :brands
   devise_for :users
   root 'products#index'
 
