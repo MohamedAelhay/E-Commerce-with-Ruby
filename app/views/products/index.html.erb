@@ -17,7 +17,7 @@
               <!-- single product -->
               <div class="col-lg-3 col-md-6">
                 <div class="single-product">
-                  <img class="img-fluid" src="<%= product.image %>" alt="">
+                  <%= image_tag(product.image, class:'img-fluid', style:'width:100%') if product.image.attached?  %>
                   <div class="product-details">
                     <h6><%= product.title %></h6>
                     <div class="price">
