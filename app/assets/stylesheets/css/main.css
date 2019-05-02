@@ -1716,6 +1716,7 @@ h1, h2, h3, h4, h5, h6 {
   .single-img {
     min-width: 50%; } }
 .single-img img {
+  cursor: pointer;
   opacity: .2;
   -webkit-transition: all 0.3s ease 0s;
   -moz-transition: all 0.3s ease 0s;

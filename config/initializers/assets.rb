@@ -23,5 +23,6 @@ Rails.application.config.assets.paths << Rails.root.join('node_modules')
                                                 js/owl.carousel.min.js
                                                 https://maps.googleapis.com/maps/api/js?key=AIzaSyCjCGmQ0Uq4exrzdcL6rvxywDDOvfAu6eE
                                                 js/gmaps.min.js
-                                                js/main.js)
+                                                js/main.js
+                                                images/category)
                                                   
