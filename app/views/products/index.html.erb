@@ -1,3 +1,49 @@
+<div class="container">
+  <div class="row">
+    <div class="col-xl-3 col-lg-4 col-md-5">
+      <div class="sidebar-filter mt-50">
+        <div class="top-filter-head">Product Filters</div>
+          <div class="common-filter">
+            <div class="head">Categories</div>
+            <%= form_tag filter_products_path, method: :get do %>
+              <%= select_tag "category", options_from_collection_for_select(@categories, "id", "name")%>
+              <%= submit_tag "Go!", :class => 'genric-btn info-border circle arrow' %>
+            <% end %>
+            </div>
+            <div class="common-filter">
+            <div class="head">Brands</div>
+            <%= form_tag filter_products_path, method: :get do %>
+              <%= select_tag "brand", options_from_collection_for_select(@brands, "id", "name")%>
+              <%= submit_tag "Go!", :class => 'genric-btn info-border circle arrow' %>
+            <% end %>
+            </div>
+            <div class="common-filter">
+            <div class="head">Sellers</div>
+            <%= form_tag filter_products_path, method: :get do %>
+              <%= select_tag "seller", options_from_collection_for_select(@sellers, "id", "name")%>
+              <%= submit_tag "Go!", :class => 'genric-btn info-border circle arrow' %>
+            <% end %>
+            </div>
+          <div class="common-filter">
+            <div class="head">Price</div>
+            <div class="price-range-area">
+              <div id="price-range"></div>
+              <div class="value-wrapper d-flex">
+                <div class="price">Price:</div>
+                <span>$</span>
+                <div id="lower-value"></div>
+                <div class="to">to</div>
+                <span>$</span>
+                <div id="upper-value"></div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
 <!-- start product Area -->
 <section class="owl-carousel active-product-area section_gap">
 	<!-- single product slide -->

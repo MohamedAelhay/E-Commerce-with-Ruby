@@ -7,6 +7,8 @@ class ProductsController < ApplicationController
   def index
     @products = Product.all
     @categories = Category.all
+    @sellers = Store.all
+    @brands = Brand.all
     @new_products = Product.last(5)
   end
 
@@ -55,6 +57,14 @@ class ProductsController < ApplicationController
     end
   end
 
+  #Filter product
+  def filter
+    if (params[:category].blank?) && (params[:brand].blank?) && (params[:seller].blank?) 
+      @products = Product.all
+    else
+      @products = Product.filter(params)
+    end
+  end
 
   # PATCH/PUT /products/1
   # PATCH/PUT /products/1.json
