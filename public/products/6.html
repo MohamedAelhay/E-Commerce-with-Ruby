@@ -1,0 +1,574 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>ECommerce</title>
+    <meta name="csrf-param" content="authenticity_token" />
+<meta name="csrf-token" content="ukAI6O9kQlmb9IOpYSgXl+br5djXeAmOJYqjetds71ruXuAq+bsRZyey8Lrgw12AouDUxcVgnfLw9vvHYUa4nA==" />
+    
+
+    <link rel="stylesheet" media="all" href="/assets/application-a6377e002364bdeba5d2d6a40dbc5acc6b6c3b8830d31f900ecab83cb62a9409.css" data-turbolinks-track="reload" />
+    <script src="/assets/application-a3dd945b68d0d15f7ed8e28e1a60f5ce1a12f7c65f62382cb26d9a0111a86146.js" data-turbolinks-track="reload"></script>
+  </head>
+
+  <body>
+  
+		<!-- Start Header Area -->
+	<header class="header_area sticky-header">
+		<div class="main_menu">
+			<nav class="navbar navbar-expand-lg navbar-light main_box">
+				<div class="container">
+					<!-- Brand and toggle get grouped for better mobile display -->
+					<a class="navbar-brand logo_h" href="index.html"><img src="/assets/logo-5d21a5c85293fa9ef9aeb82e159b9690d74a048dea9a5925acfa0a7b647e4fed.png" /></a>
+					<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+					 aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+						<span class="icon-bar"></span>
+						<span class="icon-bar"></span>
+						<span class="icon-bar"></span>
+					</button>
+					<!-- Collect the nav links, forms, and other content for toggling -->
+					<div class="collapse navbar-collapse offset" id="navbarSupportedContent">
+						<ul class="nav navbar-nav menu_nav ml-auto">
+							<li class="nav-item">
+									<div class="nav-link">Ahmed</div>
+							</li>
+							<li class="nav-item active"><a class="nav-link" href="/">Home</a></li>
+							<li class="nav-item submenu dropdown">
+								<a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true"
+								 aria-expanded="false">Shop</a>
+								<ul class="dropdown-menu">
+									<li class="nav-item"><a class="nav-link" href="category.html">Shop Category</a></li>
+									<li class="nav-item"><a class="nav-link" href="single-product.html">Product Details</a></li>
+									<li class="nav-item"><a class="nav-link" href="checkout.html">Product Checkout</a></li>
+									<li class="nav-item"><a class="nav-link" href="cart.html">Shopping Cart</a></li>
+									<li class="nav-item"><a class="nav-link" href="confirmation.html">Confirmation</a></li>
+								</ul>
+							</li>
+							<li class="nav-item submenu dropdown">
+								<div href="#" class="nav-link dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true"
+								 aria-expanded="false">Account</div>
+								<ul class="dropdown-menu">
+										<li class="nav-item"><a class="nav-link" href="tracking.html">Tracking Orders</a></li>
+										<li class="nav-item"><a class="nav-link" href="elements.html">Elements</a></li>
+										<li class="nav-item"><a class="nav-link" rel="nofollow" data-method="delete" href="/users/sign_out">Sign out</a></li>
+										<li class="nav-item"><a class="nav-link" href="/users/edit">Edit Account</a></li>
+								</ul>
+							</li>
+						</ul>
+						<ul class="nav navbar-nav navbar-right">
+
+							<li class="nav-item">
+								<a class="cart" href="/users/sign_in">
+									<span class="ti-bag"></span>
+</a>							</li>
+
+							<li class="nav-item">
+								<button class="search"><span class="lnr lnr-magnifier" id="search"></span></button>
+							</li>
+						</ul>
+					</div>
+				</div>
+			</nav>
+		</div>
+		<div class="search_input" id="search_input_box">
+			<div class="container">
+			<div class="d-flex justify-content-between">
+
+			<form action="/products/search" accept-charset="UTF-8" method="get"><input name="utf8" type="hidden" value="&#x2713;" />
+				<input type="text" name="search" id="search_input" placeholder="Search Here" class="form-control" />
+				<input type="submit" name="commit" value="Search" class="btn" data-disable-with="Search" />
+				<span class="lnr lnr-cross" id="close_search" title="Close Search"></span>
+</form>
+			</div>
+			</div>
+			
+		</div>
+	</header>
+	<!-- End Header Area -->
+
+
+	<section class="banner-area">
+		<div class="container">
+			<div class="row fullscreen align-items-center justify-content-start">
+				<div class="col-lg-12">
+					<div class="active-banner-slider owl-carousel">
+						<!-- single-slide -->
+						<div class="row single-slide align-items-center d-flex">
+							<div class="col-lg-5 col-md-6">
+								<div class="banner-content">
+									<h1>Nike New <br>Collection!</h1>
+									<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et
+										dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation.</p>
+									<div class="add-bag d-flex align-items-center">
+										<a class="add-btn" href=""><span class="lnr lnr-cross"></span></a>
+										<span class="add-text text-uppercase">Add to Bag</span>
+									</div>
+								</div>
+							</div>
+							<div class="col-lg-7">
+								<div class="banner-img">
+                                    <img class="img_fluid" src="/assets/banner/banner-img-9a978e79cafa23f86fa7dc65ed95ad545845c7e51d17f309ab0f5ede2621fdcb.png" />
+								</div>
+							</div>
+						</div>
+						<!-- single-slide -->
+						<div class="row single-slide">
+							<div class="col-lg-5">
+								<div class="banner-content">
+									<h1>Nike New <br>Collection!</h1>
+									<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et
+										dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation.</p>
+									<div class="add-bag d-flex align-items-center">
+										<a class="add-btn" href=""><span class="lnr lnr-cross"></span></a>
+										<span class="add-text text-uppercase">Add to Bag</span>
+									</div>
+								</div>
+							</div>
+							<div class="col-lg-7">
+								<div class="banner-img">
+                                    <img class="img_fluid" src="/assets/banner/banner-img-9a978e79cafa23f86fa7dc65ed95ad545845c7e51d17f309ab0f5ede2621fdcb.png" />
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</section>
+
+	<section class="features-area section_gap">
+		<div class="container">
+			<div class="row features-inner">
+				<!-- single features -->
+				<div class="col-lg-3 col-md-6 col-sm-6">
+					<div class="single-features">
+						<div class="f-icon">
+							<img src="/assets/features/f-icon1-a42c38db5c12c577d5ee77dabecec048e818bc52ef0822f9738c650db868d48e.png" />
+						</div>
+						<h6>Free Delivery</h6>
+						<p>Free Shipping on all order</p>
+					</div>
+				</div>
+				<!-- single features -->
+				<div class="col-lg-3 col-md-6 col-sm-6">
+					<div class="single-features">
+						<div class="f-icon">
+							<img src="/assets/features/f-icon2-3b484cd1697f6d79a1755f5194d132351a1b0e9106d3e90d46442b8844ae7563.png" />
+						</div>
+						<h6>Return Policy</h6>
+						<p>Free Shipping on all order</p>
+					</div>
+				</div>
+				<!-- single features -->
+				<div class="col-lg-3 col-md-6 col-sm-6">
+					<div class="single-features">
+						<div class="f-icon">
+							<img src="/assets/features/f-icon3-e5be72d638205c28f8eff3aa8d8801cf8854c7b15e8725ded1aee8508f7e78b6.png" />
+						</div>
+						<h6>24/7 Support</h6>
+						<p>Free Shipping on all order</p>
+					</div>
+				</div>
+				<!-- single features -->
+				<div class="col-lg-3 col-md-6 col-sm-6">
+					<div class="single-features">
+						<div class="f-icon">
+							<img src="/assets/features/f-icon4-f92aa88eb5247337333619aa2234f903dd6d72d636a33261072c0d2e5721f547.png" />
+						</div>
+						<h6>Secure Payment</h6>
+						<p>Free Shipping on all order</p>
+					</div>
+				</div>
+			</div>
+		</div>
+	</section>
+	
+	<!-- Start Banner Area -->
+<section class="banner-area organic-breadcrumb">
+  <div class="container">
+    <div class="breadcrumb-banner d-flex flex-wrap align-items-center justify-content-end">
+      <div class="col-first">
+        <h1>Product Details Page</h1>
+        <nav class="d-flex align-items-center">
+          <a href="index.html">Home<span class="lnr lnr-arrow-right"></span></a>
+          <a href="#">Shop<span class="lnr lnr-arrow-right"></span></a>
+          <a href="single-product.html">product-details</a>
+        </nav>
+      </div>
+    </div>
+  </div>
+</section>
+<!-- End Banner Area -->
+
+<!--================Single Product Area =================-->
+<div class="product_image_area">
+  <div class="container">
+    <div class="row s_product_inner">
+      <div class="col-lg-6">
+        <div class="single-prd-item">
+          <img class="img-fluid" src="https://robohash.org/my-own-slug.jpg?size=50x50&amp;set=set1" alt="">
+        </div>
+      </div>
+
+      <div class="col-lg-5 offset-lg-1">
+        <div class="s_product_text">
+          <h3> iPhone 3GS </h3>
+          <h2> 5.72 </h2>
+          <ul class="list">
+            <li><a class="active" href=""><span>Category</span> Health </a></li>
+            <li><a href=""><span>Availibility</span>
+                In Stock
+              </a></li>
+          </ul>
+          <p> Odit qui qui aspernatur. </p>
+          <div class="product_count">
+            <label for="qty">Quantity:</label>
+            <input type="number" name="qty" id="sst" maxlength="12" min="1" max="50" value="1" title="Quantity:" class="input-text qty">
+            <button
+              onclick="var result = document.getElementById('sst'); var sst = result.value; if( !isNaN( sst )) result.value++;return false;"
+              class="increase items-count" type="button"><i class="lnr lnr-chevron-up"></i></button>
+            <button
+              onclick="var result = document.getElementById('sst'); var sst = result.value; if( !isNaN( sst ) &amp;&amp; sst > 0 ) result.value--;return false;"
+              class="reduced items-count" type="button"><i class="lnr lnr-chevron-down"></i></button>
+          </div>
+          <div class="card_area d-flex align-items-center">
+            <a class="primary-btn" href="#">Add to Cart</a>
+            <a class="icon_btn" href="#"><i class="lnr lnr lnr-diamond"></i></a>
+            <a class="icon_btn" href="#"><i class="lnr lnr lnr-heart"></i></a>
+          </div>
+          <div>
+            <button class="secondary-btn">           
+              <a href="/products/6/edit">Edit</a> 
+            </button>     
+            <button class="secondary-btn">
+              <a href="/products">Back</a>
+            </button>
+
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<!--================End Single Product Area =================-->
+
+<!--================Product Description Area =================-->
+<section class="product_description_area">
+  <div class="container">
+    <ul class="nav nav-tabs" id="myTab" role="tablist">
+      <li class="nav-item">
+        <a class="nav-link" id="home-tab" data-toggle="tab" href="#home" role="tab" aria-controls="home"
+          aria-selected="true">Description</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link active" id="review-tab" data-toggle="tab" href="#review" role="tab" aria-controls="review"
+          aria-selected="false">Reviews</a>
+      </li>
+    </ul>
+
+    <div class="tab-content" id="myTabContent">
+      <div class="tab-pane fade" id="home" role="tabpanel" aria-labelledby="home-tab">
+        <p> Odit qui qui aspernatur. </p>
+      </div>
+      
+      <div class="tab-pane fade show active" id="review" role="tabpanel" aria-labelledby="review-tab">
+        <div class="row">
+          <div class="col-lg-6">
+            <div class="row total_rate">
+              <div class="col-6">
+                <div class="box_total">
+                  <h5>Overall</h5>
+                  <h4>4.0</h4>
+                  <h6>(03 Reviews)</h6>
+                </div>
+              </div>
+              <div class="col-6">
+                <div class="rating_list">
+                  <h3>Based on 3 Reviews</h3>
+                  <ul class="list">
+                    <li><a href="#">5 Star <i class="fa fa-star"></i><i class="fa fa-star"></i><i
+                          class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i> 01</a></li>
+                    <li><a href="#">4 Star <i class="fa fa-star"></i><i class="fa fa-star"></i><i
+                          class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i> 01</a></li>
+                    <li><a href="#">3 Star <i class="fa fa-star"></i><i class="fa fa-star"></i><i
+                          class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i> 01</a></li>
+                    <li><a href="#">2 Star <i class="fa fa-star"></i><i class="fa fa-star"></i><i
+                          class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i> 01</a></li>
+                    <li><a href="#">1 Star <i class="fa fa-star"></i><i class="fa fa-star"></i><i
+                          class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i> 01</a></li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+            <div class="review_list">
+              <div class="review_item">
+                <div class="media">
+                  <div class="d-flex">
+                    <img src="img/product/review-1.png" alt="">
+                  </div>
+                  <div class="media-body">
+                    <h4>Blake Ruiz</h4>
+                    <i class="fa fa-star"></i>
+                    <i class="fa fa-star"></i>
+                    <i class="fa fa-star"></i>
+                    <i class="fa fa-star"></i>
+                    <i class="fa fa-star"></i>
+                  </div>
+                </div>
+                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor
+                  incididunt ut labore et
+                  dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco
+                  laboris nisi ut aliquip ex ea
+                  commodo</p>
+              </div>
+              <div class="review_item">
+                <div class="media">
+                  <div class="d-flex">
+                    <img src="img/product/review-2.png" alt="">
+                  </div>
+                  <div class="media-body">
+                    <h4>Blake Ruiz</h4>
+                    <i class="fa fa-star"></i>
+                    <i class="fa fa-star"></i>
+                    <i class="fa fa-star"></i>
+                    <i class="fa fa-star"></i>
+                    <i class="fa fa-star"></i>
+                  </div>
+                </div>
+                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor
+                  incididunt ut labore et
+                  dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco
+                  laboris nisi ut aliquip ex ea
+                  commodo</p>
+              </div>
+              <div class="review_item">
+                <div class="media">
+                  <div class="d-flex">
+                    <img src="img/product/review-3.png" alt="">
+                  </div>
+                  <div class="media-body">
+                    <h4>Blake Ruiz</h4>
+                    <i class="fa fa-star"></i>
+                    <i class="fa fa-star"></i>
+                    <i class="fa fa-star"></i>
+                    <i class="fa fa-star"></i>
+                    <i class="fa fa-star"></i>
+                  </div>
+                </div>
+                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor
+                  incididunt ut labore et
+                  dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco
+                  laboris nisi ut aliquip ex ea
+                  commodo</p>
+              </div>
+            </div>
+          </div>
+          <div class="col-lg-6">
+            <div class="review_box">
+              <h4>Add a Review</h4>
+              <p>Your Rating:</p>
+              <ul class="list">
+                <li><a href="#"><i class="fa fa-star"></i></a></li>
+                <li><a href="#"><i class="fa fa-star"></i></a></li>
+                <li><a href="#"><i class="fa fa-star"></i></a></li>
+                <li><a href="#"><i class="fa fa-star"></i></a></li>
+                <li><a href="#"><i class="fa fa-star"></i></a></li>
+              </ul>
+              <p>Outstanding</p>
+              <form class="row contact_form" action="contact_process.php" method="post" id="contactForm"
+                novalidate="novalidate">
+                <div class="col-md-12">
+                  <div class="form-group">
+                    <input type="text" class="form-control" id="name" name="name" placeholder="Your Full name"
+                      onfocus="this.placeholder = ''" onblur="this.placeholder = 'Your Full name'">
+                  </div>
+                </div>
+                <div class="col-md-12">
+                  <div class="form-group">
+                    <input type="email" class="form-control" id="email" name="email" placeholder="Email Address"
+                      onfocus="this.placeholder = ''" onblur="this.placeholder = 'Email Address'">
+                  </div>
+                </div>
+                <div class="col-md-12">
+                  <div class="form-group">
+                    <textarea class="form-control" name="message" id="message" rows="1" placeholder="Review"
+                      onfocus="this.placeholder = ''" onblur="this.placeholder = 'Review'"></textarea></textarea>
+                  </div>
+                </div>
+                <div class="col-md-12 text-right">
+                  <button type="submit" value="submit" class="primary-btn">Submit Now</button>
+                </div>
+              </form>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+<!--================End Product Description Area =================-->
+
+<p id="notice">Signed in successfully.</p>
+
+<p>
+  <strong>Brand:</strong>
+  #&lt;Brand:0x00007ff57f941ea8&gt;
+</p>
+
+<p>
+  <strong>Category:</strong>
+  Health
+</p>
+
+<p>
+  <strong>Store:</strong>
+  #&lt;Store:0x00007ff57f9c3390&gt;
+</p>
+
+<p>
+  <strong>Title:</strong>
+  iPhone 3GS
+</p>
+
+<p>
+  <strong>Description:</strong>
+  Odit qui qui aspernatur.
+</p>
+
+<p>
+  <strong>Image:</strong>
+  https://robohash.org/my-own-slug.jpg?size=50x50&amp;set=set1
+</p>
+
+<p>
+  <strong>Price:</strong>
+  5.72
+</p>
+
+
+<p>
+  <strong>Quantity:</strong>
+  50
+</p>
+
+<a href="/products/6/edit">Edit</a> 
+<a href="/products">Back</a>
+
+	<!-- Start brand Area -->
+	<section class="brand-area section_gap">
+		<div class="container">
+			<div class="row">
+				<div class="col single-img">
+					<img class="img-fluid d-block mx-auto" src="/assets/brand/1-0bc1d403de5033566ab31ef623dd56e691f0f6ed96198bc46cd3dcd545ee890f.png" />
+				</div>
+				<div class="col single-img">
+					<img class="img-fluid d-block mx-auto" src="/assets/brand/2-1f8f7c56a2409ba53e2ea65038f0996e41ba0f2a2cf9205cc250c8628b10afd8.png" />
+				</div>
+				<div class="col single-img">
+					<img class="img-fluid d-block mx-auto" src="/assets/brand/3-03e7f46d8a7735083c73656cb1a8aa8ff9401e724e7a3cb1a6e6e6de717d4406.png" />
+				</div>
+				<div class="col single-img">
+					<img class="img-fluid d-block mx-auto" src="/assets/brand/4-237ae563a71ff9ef89ae5e2abcad2b4fc81930841fe5fd6ea5ce686fcd15d292.png" />
+				</div>
+				<div class="col single-img">
+					<img class="img-fluid d-block mx-auto" src="/assets/brand/5-70a8a23e679a8247a9329fc420b239e322e07f511e3c69e1ecfb5e7df62defa1.png" />
+				</div>
+			</div>
+		</div>
+	</section>
+	<!-- End brand Area -->
+
+	
+	<!-- start footer Area -->
+	<footer class="footer-area section_gap">
+		<div class="container">
+			<div class="row">
+				<div class="col-lg-3  col-md-6 col-sm-6">
+					<div class="single-footer-widget">
+						<h6>About Us</h6>
+						<p>
+							Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore dolore
+							magna aliqua.
+						</p>
+					</div>
+				</div>
+				<div class="col-lg-4  col-md-6 col-sm-6">
+					<div class="single-footer-widget">
+						<h6>Newsletter</h6>
+						<p>Stay update with our latest</p>
+						<div class="" id="mc_embed_signup">
+
+							<form target="_blank" novalidate="true" action="https://spondonit.us12.list-manage.com/subscribe/post?u=1462626880ade1ac87bd9c93a&amp;id=92a4423d01"
+							 method="get" class="form-inline">
+
+								<div class="d-flex flex-row">
+
+									<input class="form-control" name="EMAIL" placeholder="Enter Email" onfocus="this.placeholder = ''" onblur="this.placeholder = 'Enter Email '"
+									 required="" type="email">
+
+
+									<button class="click-btn btn btn-default"><i class="fa fa-long-arrow-right" aria-hidden="true"></i></button>
+									<div style="position: absolute; left: -5000px;">
+										<input name="b_36c4fd991d266f23781ded980_aefe40901a" tabindex="-1" value="" type="text">
+									</div>
+
+									<!-- <div class="col-lg-4 col-md-4">
+												<button class="bb-btn btn"><span class="lnr lnr-arrow-right"></span></button>
+											</div>  -->
+								</div>
+								<div class="info"></div>
+							</form>
+						</div>
+					</div>
+				</div>
+				<div class="col-lg-3  col-md-6 col-sm-6">
+					<div class="single-footer-widget mail-chimp">
+						<h6 class="mb-20">Instragram Feed</h6>
+						<ul class="instafeed d-flex flex-wrap">
+							<li><img src="img/i1.jpg" alt=""></li>
+							<li><img src="img/i2.jpg" alt=""></li>
+							<li><img src="img/i3.jpg" alt=""></li>
+							<li><img src="img/i4.jpg" alt=""></li>
+							<li><img src="img/i5.jpg" alt=""></li>
+							<li><img src="img/i6.jpg" alt=""></li>
+							<li><img src="img/i7.jpg" alt=""></li>
+							<li><img src="img/i8.jpg" alt=""></li>
+						</ul>
+					</div>
+				</div>
+				<div class="col-lg-2 col-md-6 col-sm-6">
+					<div class="single-footer-widget">
+						<h6>Follow Us</h6>
+						<p>Let us be social</p>
+						<div class="footer-social d-flex align-items-center">
+							<a href="#"><i class="fa fa-facebook"></i></a>
+							<a href="#"><i class="fa fa-twitter"></i></a>
+							<a href="#"><i class="fa fa-dribbble"></i></a>
+							<a href="#"><i class="fa fa-behance"></i></a>
+						</div>
+					</div>
+				</div>
+			</div>
+			<div class="footer-bottom d-flex justify-content-center align-items-center flex-wrap">
+				
+			</div>
+		</div>
+	</footer>
+	<!-- End footer Area -->
+
+		
+    <script src="/assets/js/vendor/jquery-2.2.4.min-bc8282586e3c9b075064b64bd37f30138f89bca3a516da709f7cd788b2a11ecd.js" data-turbolinks-track="reload"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.11.0/umd/popper.min.js" data-turbolinks-track="reload"></script>
+    <script src="/assets/js/vendor/bootstrap.min-ecdf4d6871e5cbd79a99a6dabf906a97e5262c0044b249b73efe15934ccfb417.js" data-turbolinks-track="reload"></script>
+    <script src="/assets/js/jquery.ajaxchimp.min-9ff57f9be0d27e87310cdde8de9ee8b555218096f929a957e5937ba7e26644f1.js" data-turbolinks-track="reload"></script>
+    <script src="/assets/js/jquery.nice-select.min-06acedc8f47315dfeca30e94f88d78a6e3d49fe739b637ed753f4950b2eac190.js" data-turbolinks-track="reload"></script>
+    <script src="/assets/js/jquery.sticky-d4a6a006e6fb1b81be2d15ce5f82771b6c2d68ae06141348e5cde8edb0c00bed.js" data-turbolinks-track="reload"></script>
+    <script src="/assets/js/nouislider.min-8dbd9c5b718a7c2b3f91b1a4cfa1ba8c557ae54294d4e7e09802dc20c0351c55.js" data-turbolinks-track="reload"></script>
+    <script src="/assets/js/jquery.magnific-popup.min-b29d983d739362882b1c8a48784521362dc73c717bf1f1f74371113fb8e443fa.js" data-turbolinks-track="reload"></script>
+    <script src="/assets/js/owl.carousel.min-3c9f9dac2a281d1090601a8896fe59fb9df20f261295bbe087f2a0f56ef7e8d9.js" data-turbolinks-track="reload"></script>
+    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCjCGmQ0Uq4exrzdcL6rvxywDDOvfAu6eE" data-turbolinks-track="reload"></script>
+    <script src="/assets/js/gmaps.min-8fb3181adfb3c2f003d3e0e12dc2d01b1b618b6ff8d229f5ab46e613cb61b747.js" data-turbolinks-track="reload"></script>
+    <script src="/assets/js/main-610b0247f93a9a8956e356d50656e09d53ffbd402a5ab6b7a3fcfbcc9482ddc4.js" data-turbolinks-track="reload"></script>
+
+  
+  </body>
+</html>

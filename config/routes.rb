@@ -1,4 +1,9 @@
 Rails.application.routes.draw do
+  resources :products do
+    collection do
+      get :search
+    end
+  end
   devise_for :admin_users, ActiveAdmin::Devise.config
   ActiveAdmin.routes(self)
   resources :rate_reviews
@@ -12,11 +17,7 @@ Rails.application.routes.draw do
     resources :brands
     resources :user_coupons
   end
-  resources :products do
-    collection do
-      get :search
-    end
-  end
+  
   devise_for :users
   root 'products#index'
 
