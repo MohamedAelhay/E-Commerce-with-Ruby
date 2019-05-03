@@ -4,6 +4,7 @@ class User < ApplicationRecord
   # attr_accessor :username
   has_many :rate_reviews
 
+  has_one_attached :image
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable
 end

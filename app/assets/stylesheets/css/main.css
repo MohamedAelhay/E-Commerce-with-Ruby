@@ -1206,7 +1206,7 @@ h1, h2, h3, h4, h5, h6 {
 /* banner area css
 ============================================================================================ */
 .banner-area {
-  background: url(../img/banner/banner-bg.jpg) center no-repeat;
+  background: url(/img/banner/banner-bg.jpg) center no-repeat;
   background-size: cover;
   position: relative; }
   @media (max-width: 768px) {
@@ -1282,7 +1282,7 @@ h1, h2, h3, h4, h5, h6 {
     color: #222222; }
 
 .organic-breadcrumb {
-  background: url(../img/banner/common-banner.jpg) center no-repeat;
+  background: url(/img/banner/common-banner.jpg) center no-repeat;
   background-size: cover;
   padding-top: 130px; }
   @media (max-width: 991px) {
@@ -1575,7 +1575,8 @@ h1, h2, h3, h4, h5, h6 {
         opacity: 0;
         visibility: hidden; }
       .single-product .product-details .prd-bottom .social-info:hover {
-        width: 115px; }
+        width: 115px;
+        cursor: pointer;}
         .single-product .product-details .prd-bottom .social-info:hover span:after {
           opacity: 1;
           visibility: visible; }
@@ -1716,6 +1717,7 @@ h1, h2, h3, h4, h5, h6 {
   .single-img {
     min-width: 50%; } }
 .single-img img {
+  cursor: pointer;
   opacity: .2;
   -webkit-transition: all 0.3s ease 0s;
   -moz-transition: all 0.3s ease 0s;

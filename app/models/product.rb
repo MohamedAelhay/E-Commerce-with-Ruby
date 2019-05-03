@@ -7,11 +7,12 @@ class Product < ApplicationRecord
 
   has_many :order_products
   belongs_to :orders
+  has_one_attached :image
 
   def self.search(params)
     products = Product.where("title LIKE? or description LIKE?", "%#{params[:search]}%",
                "%#{params[:search]}%") if params[:search].present?
-
+    
     products
   end
 

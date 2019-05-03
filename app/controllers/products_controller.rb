@@ -1,4 +1,5 @@
 class ProductsController < ApplicationController
+  caches_page :show
   before_action :set_product, only: [:show, :edit, :update, :destroy]
 
   # GET /products
@@ -22,6 +23,9 @@ class ProductsController < ApplicationController
   # GET /products/new
   def new
     @product = Product.new
+    @categories = Category.all
+    @brands = Brand.all
+    @stores = Store.all
   end
 
   # GET /products/1/edit
@@ -35,6 +39,7 @@ class ProductsController < ApplicationController
 
     respond_to do |format|
       if @product.save
+        expire_page product_path(@product)  
         format.html { redirect_to @product, notice: 'Product was successfully created.' }
         format.json { render :show, status: :created, location: @product }
       else
