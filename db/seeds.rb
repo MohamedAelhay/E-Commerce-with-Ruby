@@ -35,7 +35,7 @@ User.create!(email: 'user@example.com', password: 'passworduser', password_confi
          store_id: 1,
          title: Faker::Device.model_name,
          description: Faker::Lorem.sentence,
-         image: Faker::Avatar.image("my-own-slug", "50x50", "jpg"),
+        
          price: Faker::Commerce.price,
          quantity: rand(1..100) 
      }])
