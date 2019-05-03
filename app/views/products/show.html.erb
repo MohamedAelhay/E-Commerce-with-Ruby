@@ -42,7 +42,8 @@
           <p> <%= @product.description %> </p>
           <div class="product_count">
             <label for="qty">Quantity:</label>
-            <input type="number" name="qty" id="sst" maxlength="12" min="1" max="<%= @product.quantity %>" value="1" title="Quantity:" class="input-text qty">
+            <input type="number" name="qty" id="sst" maxlength="12" min="1" max="<%= @product.quantity %>" value="1"
+              title="Quantity:" class="input-text qty">
             <button
               onclick="var result = document.getElementById('sst'); var sst = result.value; if( !isNaN( sst )) result.value++;return false;"
               class="increase items-count" type="button"><i class="lnr lnr-chevron-up"></i></button>
@@ -56,12 +57,12 @@
             <a class="icon_btn" href="#"><i class="lnr lnr lnr-heart"></i></a>
           </div>
           <div>
-            <button class="secondary-btn">           
-              <%= link_to 'Edit', edit_product_path(@product) %> 
-            </button>     
-            <button class="secondary-btn">
-              <%= link_to 'Back', products_path %>
-            </button>
+            <a>
+              <%= link_to 'Edit', edit_product_path(@product), class:"gray_btn" %>
+            </a>
+            <a>
+              <%= link_to 'Back', products_path, class:"gray_btn" %>
+            </a>
 
           </div>
         </div>
@@ -88,8 +89,22 @@
     <div class="tab-content" id="myTabContent">
       <div class="tab-pane fade" id="home" role="tabpanel" aria-labelledby="home-tab">
         <p> <%= @product.description %> </p>
+        <p>
+          <strong>Brand:</strong>
+          <%= @product.brand.name %>
+        </p>
+
+        <p>
+          <strong>Category:</strong>
+          <%= @product.category.name %>
+        </p>
+
+        <p>
+          <strong>Store:</strong>
+          <%= @product.store.name %>
+        </p>
       </div>
-      
+
       <div class="tab-pane fade show active" id="review" role="tabpanel" aria-labelledby="review-tab">
         <div class="row">
           <div class="col-lg-6">
@@ -120,66 +135,21 @@
               </div>
             </div>
             <div class="review_list">
+              <% @product.rate_reviews.each do |product|%>
               <div class="review_item">
                 <div class="media">
                   <div class="d-flex">
                     <img src="img/product/review-1.png" alt="">
                   </div>
                   <div class="media-body">
-                    <h4>Blake Ruiz</h4>
-                    <i class="fa fa-star"></i>
-                    <i class="fa fa-star"></i>
-                    <i class="fa fa-star"></i>
-                    <i class="fa fa-star"></i>
-                    <i class="fa fa-star"></i>
+                    <h4> <%= product.user.username %> </h4>
+                    <i class="fa fa-star"> <%= product.rate%> </i>
                   </div>
                 </div>
-                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor
-                  incididunt ut labore et
-                  dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco
-                  laboris nisi ut aliquip ex ea
-                  commodo</p>
+                <p> <%= product.review %> </p>
               </div>
-              <div class="review_item">
-                <div class="media">
-                  <div class="d-flex">
-                    <img src="img/product/review-2.png" alt="">
-                  </div>
-                  <div class="media-body">
-                    <h4>Blake Ruiz</h4>
-                    <i class="fa fa-star"></i>
-                    <i class="fa fa-star"></i>
-                    <i class="fa fa-star"></i>
-                    <i class="fa fa-star"></i>
-                    <i class="fa fa-star"></i>
-                  </div>
-                </div>
-                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor
-                  incididunt ut labore et
-                  dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco
-                  laboris nisi ut aliquip ex ea
-                  commodo</p>
-              </div>
-              <div class="review_item">
-                <div class="media">
-                  <div class="d-flex">
-                    <img src="img/product/review-3.png" alt="">
-                  </div>
-                  <div class="media-body">
-                    <h4>Blake Ruiz</h4>
-                    <i class="fa fa-star"></i>
-                    <i class="fa fa-star"></i>
-                    <i class="fa fa-star"></i>
-                    <i class="fa fa-star"></i>
-                    <i class="fa fa-star"></i>
-                  </div>
-                </div>
-                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor
-                  incididunt ut labore et
-                  dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco
-                  laboris nisi ut aliquip ex ea
-                  commodo</p>
-              </div>
+              <% end %>
+
             </div>
           </div>
           <div class="col-lg-6">
@@ -220,55 +190,11 @@
               </form>
             </div>
           </div>
+
         </div>
+
       </div>
     </div>
   </div>
 </section>
 <!--================End Product Description Area =================-->
-
-<p id="notice"><%= notice %></p>
-
-<p>
-  <strong>Brand:</strong>
-  <%= @product.brand %>
-</p>
-
-<p>
-  <strong>Category:</strong>
-  <%= @product.category.name %>
-</p>
-
-<p>
-  <strong>Store:</strong>
-  <%= @product.store %>
-</p>
-
-<p>
-  <strong>Title:</strong>
-  <%= @product.title %>
-</p>
-
-<p>
-  <strong>Description:</strong>
-  <%= @product.description %>
-</p>
-
-<p>
-  <strong>Image:</strong>
-  <%= @product.image %>
-</p>
-
-<p>
-  <strong>Price:</strong>
-  <%= @product.price %>
-</p>
-
-
-<p>
-  <strong>Quantity:</strong>
-  <%= @product.quantity %>
-</p>
-
-<%= link_to 'Edit', edit_product_path(@product) %> 
-<%= link_to 'Back', products_path %>
