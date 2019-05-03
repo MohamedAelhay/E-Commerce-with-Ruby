@@ -16,6 +16,11 @@
 						<ul class="nav navbar-nav menu_nav ml-auto">
 							<li class="nav-item">
 								<% if current_user %>
+										<%= image_tag(current_user.image, class:'nav-link', style:'width:25px')%>
+									<% end %>
+							</li>
+							<li class="nav-item">
+								<% if current_user %>
 									<div class="nav-link"><%= current_user.username%></div>
 								<% end %>
 							</li>
