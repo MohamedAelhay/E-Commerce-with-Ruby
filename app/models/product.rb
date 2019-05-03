@@ -6,7 +6,8 @@ class Product < ApplicationRecord
   has_many :rate_reviews
 
   has_many :order_products
-  belongs_to :orders
+  has_many :orders, through: :order_products
+
   has_one_attached :image
 
   def self.search(params)

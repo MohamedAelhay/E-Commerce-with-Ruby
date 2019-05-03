@@ -4,8 +4,8 @@ class OrdersController < ApplicationController
   # GET /orders
   # GET /orders.json
   def index
-    @orders = Order.all
-    @orderproducts = OrderProduct.all
+    @orders = Order.find_by(user_id: current_user.id, state: "cart")
+    @order_products = OrderProduct.all
     @products = Product.all
   end
 
