@@ -5,6 +5,8 @@ class OrdersController < ApplicationController
   # GET /orders.json
   def index
     @orders = Order.all
+    @orderproducts = OrderProduct.all
+    @products = Product.all
   end
 
   # GET /orders/1
@@ -61,6 +63,12 @@ class OrdersController < ApplicationController
     end
   end
 
+
+  def totalprice
+    @sum = self.products.sum(:price)
+    @sum
+  end
+
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_order
@@ -71,4 +79,6 @@ class OrdersController < ApplicationController
     def order_params
       params.require(:order).permit(:user_id, :coupon_id, :state, :order_date, :confirmation_date, :deliverable_date, :address, :total_price, :total_price_after_discount)
     end
+
+
 end

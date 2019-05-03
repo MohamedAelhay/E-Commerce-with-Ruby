@@ -1,41 +1,204 @@
+<!-- Start Banner Area -->
+<section class="banner-area organic-breadcrumb">
+    <div class="container">
+        <div class="breadcrumb-banner d-flex flex-wrap align-items-center justify-content-end">
+            <div class="col-first">
+                <h1>Shopping Cart</h1>
+                <nav class="d-flex align-items-center">
+                    <a href="index.html">Home<span class="lnr lnr-arrow-right"></span></a>
+                    <a href="category.html">Cart</a>
+                </nav>
+            </div>
+        </div>
+    </div>
+</section>
+<!-- End Banner Area -->
+
+
+<!--================Cart Area =================-->
+<section class="cart_area">
+    <div class="container">
+        <div class="cart_inner">
+            <% @orders.each do |order| %>
+            <h1>Order Number : <%= order.id %> </h1>
+            <div class="table-responsive">
+                <table class="table">
+                    <thead>
+                        <tr>
+                            <th scope="col">Product</th>
+                            <th scope="col">Price</th>
+                            <th scope="col">Quantity</th>
+                            <th scope="col">Total</th>
+                            <th scope="col"></th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>
+                                <div class="media">
+                                    <div class="d-flex">
+                                        <img src="img/cart.jpg" alt="">
+                                    </div>
+                                    <div class="media-body">
+                                        <p><%= order.products.ids %></p>
+                                    </div>
+                                </div>
+                            </td>
+                            <td>
+                                <h5><%= order.products.ids %></h5>
+                            </td>
+                            <td>
+                                <div class="product_count">
+                                    <input type="text" name="qty" id="sst" maxlength="12" value="1" title="Quantity:"
+                                        class="input-text qty">
+                                    <button
+                                        onclick="var result = document.getElementById('sst'); var sst = result.value; if( !isNaN( sst )) result.value++;return false;"
+                                        class="increase items-count" type="button"><i
+                                            class="lnr lnr-chevron-up"></i></button>
+                                    <button
+                                        onclick="var result = document.getElementById('sst'); var sst = result.value; if( !isNaN( sst ) &amp;&amp; sst > 0 ) result.value--;return false;"
+                                        class="reduced items-count" type="button"><i
+                                            class="lnr lnr-chevron-down"></i></button>
+                                </div>
+                            </td>
+                            <td>
+                                <h5><%= order.products.ids %></h5>
+                            </td>
+                            <td>
+                                <%= image_tag("/assets/delete.png", :style => "width:40px;height:30px;") %>
+                            </td>
+                        </tr>
+
+                        <tr class="bottom_button">
+                            <td>
+                                <a class="gray_btn" href="#">Update Cart</a>
+                            </td>
+                            <td></td>
+                            <td></td>
+
+                            <td>
+                                <div class="cupon_text d-flex align-items-center">
+                                    <input type="text" placeholder="Coupon Code">
+                                    <a class="primary-btn" href="#">Apply</a>
+                                    <a class="gray_btn" href="#">Close Coupon</a>
+                                </div>
+                            </td>
+                            <td></td>
+                        </tr>
+
+                        <tr>
+                            <td></td>
+                            <td></td>
+
+                            <td>
+                                <h5>Subtotal</h5>
+                            </td>
+                            <td></td>
+
+                            <td>
+                                <h5><%= @sum %></h5>
+                            </td>
+                        </tr>
+
+                        <tr class="shipping_area">
+                            <td></td>
+                            <td></td>
+
+                            <td>
+                                <h5>Shipping</h5>
+                            </td>
+                            <td></td>
+
+                            <td>
+                                <div class="shipping_box">
+                                    <ul class="list">
+                                        <li class="active"><a href="#">Local Delivery: $2.00</a></li>
+                                    </ul>
+                                    <a class="gray_btn" href="#">Update Details</a>
+                                </div>
+                            </td>
+                        </tr>
+
+                        <tr class="shipping_area">
+                            <td></td>
+                            <td></td>
+
+                            <td>
+                                <h5>Address</h5>
+                            </td>
+                            <td></td>
+
+                            <td>
+                                <div class="shipping_box">
+                                    <textarea rows="4" col="50"></textarea>
+                                    <a class="gray_btn" href="#">Update Details</a>
+                                </div>
+                            </td>
+                        </tr>
+
+                        <tr class="out_button_area">
+                            <td></td>
+                            <td></td>
+                            <td></td>
+
+                            <td>
+                                <div class="checkout_btn_inner d-flex align-items-center">
+                                    <a>
+                                        <%= link_to 'Continue Shopping', products_path, class:"gray_btn" %>
+                                    </a>
+                                    <a class="primary-btn" href="#">Proceed to checkout</a>
+                                </div>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+            <% end %>
+
+        </div>
+    </div>
+</section>
+<!--================End Cart Area =================-->
+
+
 <p id="notice"><%= notice %></p>
 
 <h1>Orders</h1>
 
 <table>
-  <thead>
-    <tr>
-      <th>User</th>
-      <th>Coupon</th>
-      <th>State</th>
-      <th>Order date</th>
-      <th>Confirmation date</th>
-      <th>Deliverable date</th>
-      <th>Address</th>
-      <th>Total price</th>
-      <th>Total price after discount</th>
-      <th colspan="3"></th>
-    </tr>
-  </thead>
+    <thead>
+        <tr>
+            <th>User</th>
+            <th>Coupon</th>
+            <th>State</th>
+            <th>Order date</th>
+            <th>Confirmation date</th>
+            <th>Deliverable date</th>
+            <th>Address</th>
+            <th>Total price</th>
+            <th>Total price after discount</th>
+            <th colspan="3"></th>
+        </tr>
+    </thead>
 
-  <tbody>
-    <% @orders.each do |order| %>
-      <tr>
-        <td><%= order.user %></td>
-        <td><%= order.coupon %></td>
-        <td><%= order.state %></td>
-        <td><%= order.order_date %></td>
-        <td><%= order.confirmation_date %></td>
-        <td><%= order.deliverable_date %></td>
-        <td><%= order.address %></td>
-        <td><%= order.total_price %></td>
-        <td><%= order.total_price_after_discount %></td>
-        <td><%= link_to 'Show', order %></td>
-        <td><%= link_to 'Edit', edit_order_path(order) %></td>
-        <td><%= link_to 'Destroy', order, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-      </tr>
-    <% end %>
-  </tbody>
+    <tbody>
+        <% @orders.each do |order| %>
+        <tr>
+            <td><%= order.user %></td>
+            <td><%= order.coupon %></td>
+            <td><%= order.state %></td>
+            <td><%= order.order_date %></td>
+            <td><%= order.confirmation_date %></td>
+            <td><%= order.deliverable_date %></td>
+            <td><%= order.address %></td>
+            <td><%= order.total_price %></td>
+            <td><%= order.total_price_after_discount %></td>
+            <td><%= link_to 'Show', order %></td>
+            <td><%= link_to 'Edit', edit_order_path(order) %></td>
+            <td><%= link_to 'Destroy', order, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        </tr>
+        <% end %>
+    </tbody>
 </table>
 
 <br>

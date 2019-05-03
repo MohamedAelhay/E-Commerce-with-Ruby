@@ -7,11 +7,16 @@ class ProductsController < ApplicationController
     @products = Product.all
     @categories = Category.all
     @new_products = Product.last(5)
+    @orderproducts = OrderProduct.all
+    @orders = Order.all
   end
 
   # GET /products/1
   # GET /products/1.json
   def show
+    @products = Product.all
+    @rate_reviews = RateReview.all
+    @users = User.all
   end
 
   # GET /products/new
@@ -83,4 +88,5 @@ class ProductsController < ApplicationController
     def product_params
       params.require(:product).permit(:brand_id, :category_id, :store_id, :title, :description, :image, :price, :quantity)
     end
+
 end
