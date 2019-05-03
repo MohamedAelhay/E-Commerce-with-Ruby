@@ -37,7 +37,6 @@ class ProductsController < ApplicationController
 
     respond_to do |format|
       if @product.save
-        expire_page product_path(@product)  
         format.html { redirect_to @product, notice: 'Product was successfully created.' }
         format.json { render :show, status: :created, location: @product }
       else
@@ -62,6 +61,7 @@ class ProductsController < ApplicationController
   def update
     respond_to do |format|
       if @product.update(product_params)
+        expire_page product_path(@product)
         format.html { redirect_to @product, notice: 'Product was successfully updated.' }
         format.json { render :show, status: :ok, location: @product }
       else
