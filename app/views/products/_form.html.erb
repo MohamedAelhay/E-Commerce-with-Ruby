@@ -15,15 +15,15 @@
         <% end %>
 
         <div class="col-md-12 form-group">
-          <%= form.text_field :brand_id, class:'form-control', placeholder:'Brand' %>
+          <%= form.collection_select(:brand_id, @categories, :id, :name, :prompt => "Category") %>
         </div>
 
         <div class="col-md-12 form-group">
-          <%= form.text_field :category_id, class:'form-control', placeholder:'Category' %>
+          <%= form.collection_select(:category_id, @brands, :id, :name, :prompt => "Brand") %>
         </div>
 
         <div class="col-md-12 form-group">
-          <%= form.text_field :store_id, class:'form-control', placeholder:'Store' %>
+          <%= form.collection_select(:store_id, @stores, :id, :name, :prompt => "Store") %>
         </div>
 
         <div class="col-md-12 form-group">
@@ -31,7 +31,7 @@
         </div>
 
         <div class="col-md-12 form-group">
-          <%= form.text_area :description, class:'form-control', placeholder:'Brand'%>
+          <%= form.text_area :description, class:'form-control', placeholder:'Description'%>
         </div>
         
         <div class="col-md-12 form-group">
