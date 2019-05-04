@@ -16,7 +16,7 @@
 						<h3>Log in to enter</h3>
               <%= form_for(resource, as: resource_name, url: session_path(resource_name), html: {class: "row login_form"}) do |f| %>
 							<div class="col-md-12 form-group">
-                <%= f.email_field :email, autocomplete: "email", class: "form-control" , placeholder: "Username", onfocus: "this.placeholder = ''", onblur: "this.placeholder = 'Username'"%>
+                <%= f.email_field :email, autocomplete: "email", class: "form-control" , placeholder: "E-Mail", onfocus: "this.placeholder = ''", onblur: "this.placeholder = 'E-Mail'"%>
               </div>
               <div class="col-md-12 form-group">
                 <%= f.password_field :password, autocomplete: "current-password", class: "form-control" , placeholder: "Password", onfocus: "this.placeholder = ''", onblur: "this.placeholder = 'Password'" %>

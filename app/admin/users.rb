@@ -1,4 +1,4 @@
-ActiveAdmin.register Store do
+ActiveAdmin.register User do
 # See permitted parameters documentation:
 # https://github.com/activeadmin/activeadmin/blob/master/docs/2-resource-customization.md#setting-up-strong-parameters
 #
@@ -11,21 +11,19 @@ ActiveAdmin.register Store do
 #   permitted << :other if params[:action] == 'create' && current_user.admin?
 #   permitted
 # end
-permit_params :user_id,:name,:summary
+permit_params :username,:email, :password, :password_confirmation ,:role_type
 form do |f|
     f.inputs do
-      f.input :user_id , as: :select,:collection => User.get_sellers,include_blank: true,
-      allow_blank: false
-      f.input :name
-      f.input :summary
-      
+      f.input :username  
+      f.input :email
+      f.input :role_type, as: :select, collection: (["buyer", "seller"])
+      if f.object.new_record?
+        f.inputs do
+        f.input :password
+        f.input :password_confirmation
+        end
+    end
     end
     f.actions
   end
-controller do
-
-def store_params
-    params.require(:store).permit(:user_id, :name, :summary)
-  end
-end  
 end
