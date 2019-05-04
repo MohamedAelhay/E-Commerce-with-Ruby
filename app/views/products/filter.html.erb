@@ -40,26 +40,18 @@
             </div>
         </div>
         <div class="col-xl-9 col-lg-8 col-md-7">
-        <div class="row justify-content-center">
-					<div class="col-lg-6 text-center">
-						<div class="section-title">
-							<h1>New Arrival</h1>
-						</div>
-					</div>
-				</div>
-            
-        <!-- Start Best Seller -->
+            <!-- Start Best Seller -->
             <section class="lattest-product-area pb-40 category-list">
                 <div class="row">
-                    <% @new_products.each do |new_product| %>
+                    <% @products.each do |product| %>
                     <!-- single product -->
                     <div class="col-lg-4 col-md-6">
                         <div class="single-product">
-                            <%= image_tag(new_product.image, class:'img-fluid', style:'width:100%') if new_product.image.attached?  %>
+                            <%= image_tag(product.image, class:'img-fluid', style:'width:100%') if product.image.attached?  %>
                             <div class="product-details">
-                                <h6><%= new_product.title %></h6>
+                                <h6><%= product.title %></h6>
                                 <div class="price">
-                                    <h6><%= new_product.price %></h6>
+                                    <h6><%= product.price %></h6>
                                 </div>
                                 <div class="prd-bottom">
         
@@ -91,59 +83,3 @@
     </div>
 </div>
 <!-- End of filter Area -->
-
-<!-- start product Area -->
-<section class="owl-carousel active-product-area section_gap">
-	<!-- single product slide -->
-  <% @categories.each do |category| %>
-    <div class="single-product-slider">
-			<div class="container">
-				<div class="row justify-content-center">
-					<div class="col-lg-6 text-center">
-						<div class="section-title">
-							<h1><%= category.name %></h1>
-						</div>
-					</div>
-				</div>
-          <div class="row">
-          <% @products.each do |product| %>
-            <% if product.category.name == category.name %>
-              <!-- single product -->
-              <div class="col-lg-3 col-md-6">
-                <div class="single-product">
-                  <%= image_tag(product.image, class:'img-fluid', style:'width:100%') if product.image.attached?  %>
-                  <div class="product-details">
-                    <h6><%= product.title %></h6>
-                    <div class="price">
-                      <h6><%= product.price %></h6>
-                    </div>
-                    <div class="prd-bottom">
-
-                      <div href="" class="social-info">
-                        <span class="ti-bag"></span>
-                        <p class="hover-text">add to bag</p>
-                      </div>
-                      <div href="" class="social-info">
-                        <span class="lnr lnr-heart"></span>
-                        <p class="hover-text">Wishlist</p>
-                      </div>
-                      <div class="social-info">
-                      <span class="lnr lnr-move"></span>
-                      <p class="hover-text">
-                      <%= link_to 'view more', product_path(product)%></p>
-                      </div>
-                      <div href="" class="social-info">
-                        <span class="lnr lnr-sync"></span>
-                        <p class="hover-text">compare</p>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            <% end %>
-            <% end %>
-          </div>
-      </div>
-	</div>
-  <% end %>
-</section>

@@ -15,12 +15,13 @@
         <% end %>
 
         <div class="col-md-12 form-group">
-          <%= form.collection_select(:brand_id, @categories, :id, :name, :prompt => "Category") %>
+          <%= form.collection_select(:category_id, @categories, :id, :name, :prompt => "Categories") %>
         </div>
 
         <div class="col-md-12 form-group">
-          <%= form.collection_select(:category_id, @brands, :id, :name, :prompt => "Brand") %>
+          <%= form.collection_select(:brand_id, @brands, :id, :name, :prompt => "Brand") %>
         </div>
+
 
         <div class="col-md-12 form-group">
           <%= form.collection_select(:store_id, @stores, :id, :name, :prompt => "Store") %>
