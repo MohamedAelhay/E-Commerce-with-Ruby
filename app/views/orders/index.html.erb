@@ -19,8 +19,6 @@
 <section class="cart_area">
     <div class="container">
         <div class="cart_inner">
-            <%# <%= debug @orders[0].products[1].title %>
-            <%# <%= debug order.title%>
             <h1>Order Number : <%= @orders.id %> </h1>
             <div class="table-responsive">
                 <table class="table">
@@ -34,7 +32,7 @@
                         </tr>
                     </thead>
                     <tbody>
-                        <% @orders.order_products.each do |order| %>
+                        <% @orders.order_products.each.with_index do |order, index| %>
 
                         <tr>
                             <td>
@@ -65,7 +63,7 @@
                                 </div>
                             </td>
                             <td>
-                                <h5><%= order.product.price %></h5>
+                                <h5><%= @each_total[index] %></h5>
                             </td>
                             <td>
                                 <a>
@@ -77,9 +75,7 @@
                         <%end%>
 
                         <tr class="bottom_button">
-                            <td>
-                                <a class="gray_btn" href="#">Update Cart</a>
-                            </td>
+                            <td></td>
                             <td></td>
                             <td></td>
 
@@ -103,7 +99,7 @@
                             <td></td>
 
                             <td>
-                                <p>hena total el products</p>
+                                <p><%= @total_before %></p> 
                             </td>
                         </tr>
 
@@ -128,7 +124,7 @@
                         <tr class="shipping_area">
                             <td></td>
                             <td></td>
-
+                            
                             <td>
                                 <h5>Total</h5>
                             </td>
@@ -137,7 +133,7 @@
                             <td>
                                 <div class="shipping_box">
                                     <ul class="list">
-                                        <h5>hena total bel shipping</h5>
+                                        <h5><%= @total_after %></h5>
                                     </ul>
                                     <a class="gray_btn" href="#">Update Details</a>
                                 </div>

@@ -1,7 +1,6 @@
 class OrdersController < ApplicationController
-  before_action :set_order, only: [:show, :edit, :update, :destroy]
+  before_action :set_order, only: [:show, :edit, :update, :destroy, :total_price, :total_before_shipping, :total_after_shipping]
   before_action :set_order_product, only: [:remove_product]
-  respond_to :html, :json
 
   # GET /orders
   # GET /orders.json
@@ -9,10 +8,15 @@ class OrdersController < ApplicationController
     @orders = Order.find_by(user_id: current_user.id, state: "cart")
     @order_products = OrderProduct.all
     @products = Product.all
-    respond_to do |format|
-      format.html
-      format.json
+
+    @single_order_products = OrderProduct.where(order_id: 1)
+    @each_total = []
+    @single_order_products.each do |single_product|
+      @each_total.push(total_price(single_product))
     end
+
+    @total_before = total_before_shipping(@orders)
+    @total_after = total_after_shipping(@total_before)
   end
 
   # GET /orders/1
@@ -77,11 +81,24 @@ class OrdersController < ApplicationController
     end
   end
 
-  
-  # def totalprice
-  #   @sum = self.products.sum(:price)
-  #   @sum
-  # end
+  def total_price(single_product)
+    total_price = 0.00
+    total_price = (single_product.Product_quantity) * (single_product.product.price)
+    total_price.to_f
+  end
+
+  def total_before_shipping(orders)
+    total_price = 0.00
+    orders.order_products.each do |prod|
+      total_price += (prod.Product_quantity * prod.product.price)
+    end
+    total_price.to_f
+  end
+
+  def total_after_shipping(total_before)
+    total_price = 2.00 + total_before
+    total_price.to_f
+  end
 
   private
     # Use callbacks to share common setup or constraints between actions.
