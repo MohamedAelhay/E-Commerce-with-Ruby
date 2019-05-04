@@ -1,5 +1,7 @@
 class OrdersController < ApplicationController
   before_action :set_order, only: [:show, :edit, :update, :destroy]
+  before_action :set_order_product, only: [:remove_product]
+  respond_to :html, :json
 
   # GET /orders
   # GET /orders.json
@@ -7,6 +9,10 @@ class OrdersController < ApplicationController
     @orders = Order.find_by(user_id: current_user.id, state: "cart")
     @order_products = OrderProduct.all
     @products = Product.all
+    respond_to do |format|
+      format.html
+      format.json
+    end
   end
 
   # GET /orders/1
@@ -63,11 +69,19 @@ class OrdersController < ApplicationController
     end
   end
 
-
-  def totalprice
-    @sum = self.products.sum(:price)
-    @sum
+  def remove_product
+    @order_product.destroy
+    respond_to do |format|
+      format.html { redirect_to orders_url, notice: 'Product was successfully removed.' }
+      format.json { head :no_content }
+    end
   end
+
+  
+  # def totalprice
+  #   @sum = self.products.sum(:price)
+  #   @sum
+  # end
 
   private
     # Use callbacks to share common setup or constraints between actions.
@@ -75,6 +89,9 @@ class OrdersController < ApplicationController
       @order = Order.find(params[:id])
     end
 
+    def set_order_product
+      @order_product = OrderProduct.find(params[:id])
+    end
     # Never trust parameters from the scary internet, only allow the white list through.
     def order_params
       params.require(:order).permit(:user_id, :coupon_id, :state, :order_date, :confirmation_date, :deliverable_date, :address, :total_price, :total_price_after_discount)

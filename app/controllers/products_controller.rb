@@ -1,6 +1,7 @@
 class ProductsController < ApplicationController
   caches_page :show
   before_action :set_product, only: [:show, :edit, :update, :destroy]
+  respond_to :html, :json
 
   # GET /products
   # GET /products.json
@@ -77,7 +78,7 @@ class ProductsController < ApplicationController
   end
 
   # DELETE /products/1
-  # DELETE /products/1.json
+  # DELETE /products/1.json  
   def destroy
     @product.destroy
     respond_to do |format|

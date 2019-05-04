@@ -1,5 +1,6 @@
 class OrderProductsController < ApplicationController
   before_action :set_order_product, only: [:show, :edit, :update, :destroy]
+  respond_to :html, :json
 
   # GET /order_products
   # GET /order_products.json

@@ -4,6 +4,10 @@ Rails.application.routes.draw do
       get :search
     end
   end
+  resources :orders do
+    delete :remove_product, on: :member
+  end
+  
   devise_for :admin_users, ActiveAdmin::Devise.config
   ActiveAdmin.routes(self)
   resources :rate_reviews
