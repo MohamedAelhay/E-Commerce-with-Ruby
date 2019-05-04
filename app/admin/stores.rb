@@ -11,6 +11,17 @@ ActiveAdmin.register Store do
 #   permitted << :other if params[:action] == 'create' && current_user.admin?
 #   permitted
 # end
+permit_params :user_id,:name,:summary
+form do |f|
+    f.inputs do
+      f.input :user_id , as: :select,:collection => User.get_sellers,include_blank: true,
+      allow_blank: false
+      f.input :name
+      f.input :summary
+      
+    end
+    f.actions
+  end
 controller do
 
 def store_params
