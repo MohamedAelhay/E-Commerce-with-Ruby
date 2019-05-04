@@ -20,7 +20,6 @@ form do |f|
       if f.object.new_record?
         f.inputs do
         f.input :password
-        f.input :password
         f.input :password_confirmation
         end
     end
