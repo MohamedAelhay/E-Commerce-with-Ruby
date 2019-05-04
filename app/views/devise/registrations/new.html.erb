@@ -20,7 +20,7 @@
                 <%= f.text_field :username, autofocus: true, autocomplete: "username", class: "form-control" , placeholder: "Username", onfocus: "this.placeholder = ''", onblur: "this.placeholder = 'Username'" %>
               </div>
               <div class="col-md-12 form-group">
-                <%= f.email_field :email, autocomplete: "email", class: "form-control" , placeholder: "Username", onfocus: "this.placeholder = ''", onblur: "this.placeholder = 'Username'"%>
+                <%= f.email_field :email, autocomplete: "email", class: "form-control" , placeholder: "E-Mail", onfocus: "this.placeholder = ''", onblur: "this.placeholder = 'E-Mail'"%>
               </div>
               <div class="col-md-12 form-group">
                 <% if @minimum_password_length %>
