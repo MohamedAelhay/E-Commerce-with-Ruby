@@ -8,6 +8,8 @@ class ProductsController < ApplicationController
   def index
     @products = Product.all
     @categories = Category.all
+    @sellers = Store.all
+    @brands = Brand.all
     @new_products = Product.last(5)
     @orderproducts = OrderProduct.all
     @orders = Order.all
@@ -58,9 +60,23 @@ class ProductsController < ApplicationController
       @products = Product.all
     else
       @products = Product.search(params)
+      @categories = Category.all
+      @sellers = Store.all
+      @brands = Brand.all
     end
   end
 
+  #Filter product
+  def filter
+    if (params[:category].blank?) && (params[:brand].blank?) && (params[:seller].blank?) &&(params[:price].blank?) 
+      @products = Product.all
+    else
+      @products = Product.filter(params)
+      @categories = Category.all
+      @sellers = Store.all
+      @brands = Brand.all
+    end
+  end
 
   # PATCH/PUT /products/1
   # PATCH/PUT /products/1.json

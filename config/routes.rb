@@ -3,6 +3,10 @@ Rails.application.routes.draw do
     collection do
       get :search
     end
+
+    collection do
+      get :filter
+    end
   end
   resources :orders do
     delete :remove_product, on: :member
