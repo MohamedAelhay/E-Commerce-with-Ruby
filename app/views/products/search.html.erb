@@ -1,14 +1,87 @@
-<table>
-    <thead>
-        <th> Product name </th>
-        <th> Product description </th>
-    </thead>
-    <tbody>
-        <% @products.each do |product| %>
-        <tr>
-            <td> <%= product.title %> </td>
-            <td> <%= product.description %></td>        
-        </tr>
-        <% end %>
-    </tbody>
-</table>
+<body id="category">
+<div class="container">
+    <div class="row">
+        <div class="col-xl-3 col-lg-4 col-md-5">
+            <div class="sidebar-filter mt-50">
+                <div class="top-filter-head">Product Filters</div>
+                    <div class="common-filter">
+                    <div class="head">Categories</div>
+                        <%= form_tag filter_products_path, method: :get do %>
+                        <%= select_tag "category", options_from_collection_for_select(@categories, "id", "name")%>
+                        <%= submit_tag "Go!", :class => 'genric-btn info-border circle arrow' %>
+                        <% end %>
+                    </div>
+                    <div class="common-filter">
+                    <div class="head">Brands</div>
+                        <%= form_tag filter_products_path, method: :get do %>
+                        <%= select_tag "brand", options_from_collection_for_select(@brands, "id", "name")%>
+                        <%= submit_tag "Go!", :class => 'genric-btn info-border circle arrow' %>
+                        <% end %>
+                    </div> 
+                    <div class="common-filter">
+                    <div class="head">Sellers</div>
+                        <%= form_tag filter_products_path, method: :get do %>
+                        <%= select_tag "seller", options_from_collection_for_select(@sellers, "id", "name")%>
+                        <%= submit_tag "Go!", :class => 'genric-btn info-border circle arrow' %>
+                        <% end %>
+                    </div>
+                    <div class="common-filter">
+                    <div class="head">Price</div>
+                        <%= form_tag filter_products_path, method: :get do %>
+                            <ul>
+                                <li class="filter-list"><%= radio_button :price, "10",  true , class: "pixel-radio" %><label>less than 100</label></li>
+                                <li class="filter-list"><%= radio_button :price, "20",  true , class: "pixel-radio" %><label>less than 1000</label></li>
+                                <li class="filter-list"><%= radio_button :price, "30",  true , class: "pixel-radio" %><label>less than 5000</label></li>
+                                <li class="filter-list"><%= radio_button :price, "50",  true , class: "pixel-radio" %><label>less than 10,000</label></li>
+                                <li class="filter-list"><%= radio_button :price, "100", true , class: "pixel-radio" %><label>less than 10,000</label></li>
+                            </ul>
+                            <%= submit_tag "Go!", :class => 'genric-btn info-border circle arrow' %>              
+                        <% end %>
+                </div>
+            </div>
+        </div>
+        <div class="col-xl-9 col-lg-8 col-md-7">
+            <!-- Start Best Seller -->
+            <section class="lattest-product-area pb-40 category-list">
+                <div class="row">
+                    <% @products.each do |product| %>
+                    <!-- single product -->
+                    <div class="col-lg-4 col-md-6">
+                        <div class="single-product">
+                            <img class="img-fluid" src="img/product/p6.jpg" alt="">
+                            <div class="product-details">
+                                <h6><%= product.title %></h6>
+                                <div class="price">
+                                    <h6><%= product.price %></h6>
+                                </div>
+                                <div class="prd-bottom">
+        
+                                    <a href="" class="social-info">
+                                        <span class="ti-bag"></span>
+                                        <p class="hover-text">add to bag</p>
+                                    </a>
+                                    <a href="" class="social-info">
+                                        <span class="lnr lnr-heart"></span>
+                                        <p class="hover-text">Wishlist</p>
+                                    </a>
+                                    <a href="" class="social-info">
+                                        <span class="lnr lnr-sync"></span>
+                                        <p class="hover-text">compare</p>
+                                    </a>
+                                    <a href="" class="social-info">
+                                        <span class="lnr lnr-move"></span>
+                                        <p class="hover-text">view more</p>
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <% end %>
+                </div>
+            </section>
+            <!-- End Best Seller -->
+        </div>
+    </div>
+</div>
+<!-- End of filter Area -->
+</body>

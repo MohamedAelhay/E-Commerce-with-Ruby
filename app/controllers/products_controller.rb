@@ -54,6 +54,9 @@ class ProductsController < ApplicationController
       @products = Product.all
     else
       @products = Product.search(params)
+      @categories = Category.all
+      @sellers = Store.all
+      @brands = Brand.all
     end
   end
 
