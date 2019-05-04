@@ -7,6 +7,8 @@ class ProductsController < ApplicationController
   def index
     @products = Product.all
     @categories = Category.all
+    @sellers = Store.all
+    @brands = Brand.all
     @new_products = Product.last(5)
   end
 
@@ -37,7 +39,6 @@ class ProductsController < ApplicationController
 
     respond_to do |format|
       if @product.save
-        expire_page product_path(@product)  
         format.html { redirect_to @product, notice: 'Product was successfully created.' }
         format.json { render :show, status: :created, location: @product }
       else
@@ -53,15 +54,30 @@ class ProductsController < ApplicationController
       @products = Product.all
     else
       @products = Product.search(params)
+      @categories = Category.all
+      @sellers = Store.all
+      @brands = Brand.all
     end
   end
 
+  #Filter product
+  def filter
+    if (params[:category].blank?) && (params[:brand].blank?) && (params[:seller].blank?) &&(params[:price].blank?) 
+      @products = Product.all
+    else
+      @products = Product.filter(params)
+      @categories = Category.all
+      @sellers = Store.all
+      @brands = Brand.all
+    end
+  end
 
   # PATCH/PUT /products/1
   # PATCH/PUT /products/1.json
   def update
     respond_to do |format|
       if @product.update(product_params)
+        expire_page product_path(@product)
         format.html { redirect_to @product, notice: 'Product was successfully updated.' }
         format.json { render :show, status: :ok, location: @product }
       else
