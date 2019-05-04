@@ -113,7 +113,6 @@ ActiveRecord::Schema.define(version: 2019_05_02_225650) do
     t.bigint "store_id"
     t.string "title"
     t.text "description"
-    t.string "image"
     t.float "price"
     t.integer "quantity"
     t.datetime "created_at", null: false
