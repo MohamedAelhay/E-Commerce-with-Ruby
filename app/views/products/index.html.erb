@@ -16,7 +16,7 @@
               <%= select_tag "brand", options_from_collection_for_select(@brands, "id", "name")%>
               <%= submit_tag "Go!", :class => 'genric-btn info-border circle arrow' %>
             <% end %>
-            </div>
+            </div> 
             <div class="common-filter">
             <div class="head">Sellers</div>
             <%= form_tag filter_products_path, method: :get do %>
@@ -24,19 +24,19 @@
               <%= submit_tag "Go!", :class => 'genric-btn info-border circle arrow' %>
             <% end %>
             </div>
-          <div class="common-filter">
-            <div class="head">Price</div>
-            <div class="price-range-area">
-              <div id="price-range"></div>
-              <div class="value-wrapper d-flex">
-                <div class="price">Price:</div>
-                <span>$</span>
-                <div id="lower-value"></div>
-                <div class="to">to</div>
-                <span>$</span>
-                <div id="upper-value"></div>
-              </div>
-            </div>
+            <div class="common-filter">
+						<div class="head">Price</div>
+						<%= form_tag filter_products_path, method: :get do %>
+							<ul>
+								<li class="filter-list"><%= radio_button :price, "10",  true , class: "pixel-radio" %><label>less than 100</label></li>
+								<li class="filter-list"><%= radio_button :price, "20",  true , class: "pixel-radio" %><label>less than 1000</label></li>
+								<li class="filter-list"><%= radio_button :price, "30",  true , class: "pixel-radio" %><label>less than 5000</label></li>
+								<li class="filter-list"><%= radio_button :price, "50",  true , class: "pixel-radio" %><label>less than 10,000</label></li>
+								<li class="filter-list"><%= radio_button :price, "100", true , class: "pixel-radio" %><label>less than 10,000</label></li>
+                </ul>
+              <%= submit_tag "Go!", :class => 'genric-btn info-border circle arrow' %>              
+              <% end %>
+					  </div>
           </div>
         </div>
       </div>

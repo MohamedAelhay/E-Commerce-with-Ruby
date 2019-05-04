@@ -1,3 +1,4 @@
+
 <table>
     <thead>
         <th> Product name </th>
@@ -5,10 +6,11 @@
     </thead>
     <tbody>
         <% @products.each do |product| %>
-        <tr>
+            <tr>
             <td> <%= product.title %> </td>
             <td> <%= product.description %></td>        
-        </tr>
+            </tr>
         <% end %>
     </tbody>
 </table>
+<% debug params[:price].keys %>

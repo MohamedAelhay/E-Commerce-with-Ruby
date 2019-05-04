@@ -59,7 +59,7 @@ class ProductsController < ApplicationController
 
   #Filter product
   def filter
-    if (params[:category].blank?) && (params[:brand].blank?) && (params[:seller].blank?) 
+    if (params[:category].blank?) && (params[:brand].blank?) && (params[:seller].blank?) &&(params[:price].blank?) 
       @products = Product.all
     else
       @products = Product.filter(params)

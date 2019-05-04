@@ -16,7 +16,7 @@ class Product < ApplicationRecord
     products = Product.where(category: params[:category]) if params[:category].present?
     products = Product.where(brand: params[:brand])       if params[:brand].present?
     products = Product.where(store: params[:seller])      if params[:seller].present?
-    
+    products = Product.where(["price <= ?", params[:price].keys.first.to_s]) if params[:price].present?
     products
   end
 end
