@@ -5,23 +5,36 @@ class OrdersController < ApplicationController
   # GET /orders
   # GET /orders.json
   def index
-    @orders = Order.find_by(user_id: current_user.id, state: "cart")
-    @order_products = OrderProduct.all
-    @products = Product.all
-
-    @single_order_products = OrderProduct.where(order_id: 1)
-    @each_total = []
-    @single_order_products.each do |single_product|
-      @each_total.push(total_price(single_product))
-    end
-
-    @total_before = total_before_shipping(@orders)
-    @total_after = total_after_shipping(@total_before)
+    @orders = current_user.orders
   end
 
   # GET /orders/1
   # GET /orders/1.json
   def show
+    if ( Order.find_by(id: params[:id]).state == "cart" )
+      @orders = Order.find_by(user_id: current_user.id, state: "cart")
+      @order_products = OrderProduct.all
+      @products = Product.all
+
+      @status = "cart"
+
+      @single_order_products = OrderProduct.where(order_id: @orders.id)
+      @each_total = []
+      @single_order_products.each do |single_product|
+        @each_total.push(calculate_total_price(single_product))
+      end
+
+      @total_before = calculate_products_total(@orders)
+      @total_after_discount = calculate_total_after_discount(@total_before,@orders)
+      @total_after = calculate_total_after_shipping(@total_before)
+
+    else
+      @total_price = Order.find_by(id: params[:id]).total_price
+      @order_products = OrderProduct.where(order_id: params[:id])
+
+      @status = "not cart"
+    end
+
   end
 
   # GET /orders/new
@@ -75,19 +88,16 @@ class OrdersController < ApplicationController
 
   def remove_product
     @order_product.destroy
-    respond_to do |format|
-      format.html { redirect_to orders_url, notice: 'Product was successfully removed.' }
-      format.json { head :no_content }
-    end
+    redirect_to order_path(@order_product.order_id)
   end
 
-  def total_price(single_product)
+  def calculate_total_price(single_product)
     total_price = 0.00
     total_price = (single_product.Product_quantity) * (single_product.product.price)
     total_price.to_f
   end
 
-  def total_before_shipping(orders)
+  def calculate_products_total(orders)
     total_price = 0.00
     orders.order_products.each do |prod|
       total_price += (prod.Product_quantity * prod.product.price)
@@ -95,7 +105,11 @@ class OrdersController < ApplicationController
     total_price.to_f
   end
 
-  def total_after_shipping(total_before)
+  def calculate_total_after_discount(total_before,orders)
+    total_price = 0.00
+  end
+
+  def calculate_total_after_shipping(total_before)
     total_price = 2.00 + total_before
     total_price.to_f
   end

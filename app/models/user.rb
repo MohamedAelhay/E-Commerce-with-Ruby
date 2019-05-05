@@ -3,7 +3,8 @@ class User < ApplicationRecord
   # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable
   # attr_accessor :username
   has_many :rate_reviews
-
+  has_many :orders
+  
   # scope :sellers, => { 
   #   where(:role_type => "seller") 
   # }
