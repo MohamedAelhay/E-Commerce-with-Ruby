@@ -15,27 +15,29 @@
                         </thead>
                         <tbody>
                           <% @products.each do |product|%>
-                            <tr>
-                                <td>
-                                    <div class="media">
-                                        <div class="d-flex">
+                            <% if !product.is_deleted%>
+                                <tr>
+                                    <td>
+                                        <div class="media">
+                                            <div class="d-flex">
+                                            </div>
+                                            <div class="media-body">
+                                                <p><%= product.title %></p>
+                                            </div>
                                         </div>
-                                        <div class="media-body">
-                                            <p><%= product.title %></p>
-                                        </div>
-                                    </div>
-                                </td>
-                                <td>
-                                    <h5>$<%= product.price %></h5>
-                                </td>
-                                <td>
-                                    <h5><%= product.quantity %></h5>
-                                </td>
-                                <td>
-                                    <%= link_to "Edit", edit_product_path(product), class: "genric-btn info-border circle arrow small"%>
-                                    <%= link_to "Delete", product, method: :delete, data: { confirm: 'Are you sure?' }, class: "genric-btn danger-border circle arrow small"%>
-                                </td>
-                            </tr>
+                                    </td>
+                                    <td>
+                                        <h5>$<%= product.price %></h5>
+                                    </td>
+                                    <td>
+                                        <h5><%= product.quantity %></h5>
+                                    </td>
+                                    <td>
+                                        <%= link_to "Edit", edit_product_path(product), class: "genric-btn info-border circle arrow small"%>
+                                        <%= link_to "Delete", product, method: :delete, data: { confirm: 'Are you sure?' }, class: "genric-btn danger-border circle arrow small"%>
+                                    </td>
+                                </tr>
+                            <% end %>
                           <% end %>
                             <tr class="out_button_area">
                                 <td></td>
