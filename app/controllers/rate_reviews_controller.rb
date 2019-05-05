@@ -5,6 +5,7 @@ class RateReviewsController < ApplicationController
   # GET /rate_reviews.json
   def index
     @rate_reviews = RateReview.all
+    @products = Product.all
   end
 
   # GET /rate_reviews/1

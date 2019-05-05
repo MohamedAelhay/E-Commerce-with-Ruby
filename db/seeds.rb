@@ -7,29 +7,25 @@
 #   Character.create(name: 'Luke', movie: movies.first)
 AdminUser.create!(email: 'admin@example.com', password: 'password', password_confirmation: 'password') if Rails.env.development?
 User.create!(email: 'user@example.com', password: 'passworduser', password_confirmation: 'passworduser',username: 'user') if Rails.env.development?
+  10.times do
+      Brand.create([{
+          name: Faker::Appliance.brand
+      }])
+  end
 
-    # AdminUser.create!(email: 'admin2@example.com', password: 'password', password_confirmation: 'password') if Rails.env.development?
-    # User.create!(email: 'user2@example.com', password: 'passworduser', password_confirmation: 'passworduser',username: 'user',role_type: 'user') if Rails.env.development?
+  10.times do
+      Category.create([{
+          name: Faker::Commerce.department(1, true)
+      }])
+  end
 
-#  10.times do
-#      Brand.create([{
-#          name: Faker::Appliance.brand
-#      }])
-#  end
-
-#  10.times do
-#      Category.create([{
-#          name: Faker::Commerce.department(1, true)
-#      }])
-#  end
-
-#  10.times do
-#      Store.create([{
-#          user_id: 1,
-#          name: Faker::Company.name,
-#          summary: Faker::Lorem.sentence
-#      }])
-#  end
+  10.times do
+      Store.create([{
+          user_id: 1,
+          name: Faker::Company.name,
+          summary: Faker::Lorem.sentence
+      }])
+  end
 
  10.times do
      Product.create([{

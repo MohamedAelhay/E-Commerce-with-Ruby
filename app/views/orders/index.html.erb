@@ -1,43 +1,75 @@
-<p id="notice"><%= notice %></p>
+<!-- Start Banner Area -->
+<section class="banner-area organic-breadcrumb">
+  <div class="container">
+    <div class="breadcrumb-banner d-flex flex-wrap align-items-center justify-content-end">
+      <div class="col-first">
+        <h1>Orders' History</h1>
+        <nav class="d-flex align-items-center">
+          <a href="index.html">Home<span class="lnr lnr-arrow-right"></span></a>
+          <a href="category.html">Orders' History</a>
+        </nav>
+      </div>
+    </div>
+  </div>
+</section>
+<!-- End Banner Area -->
 
-<h1>Orders</h1>
+<!--================History Area =================-->
+<section class="cart_area">
+  <div class="container">
+    <div class="cart_inner">
+      <h1>Orders </h1>
+      <div class="table-responsive">
+        <table class="table">
+          <thead>
+            <tr>
+              <th scope="col">Order Number</th>
+              <th scope="col">Order Status</th>
+              <th scope="col">Total Price</th>
+              <th scope="col">Order Date</th>
+              <th scope="col">Confirmation Date</th>
+              <th scope="col">Deliverable Date</th>
+              <th scope="col"> </th>
+            </tr>
+          </thead>
+          <tbody>
+            <% @orders.each do |order| %>
+            <tr>
+              <td>
+                <div class="media">
+                  <div class="d-flex">
+                    <img src="img/cart.jpg" alt="">
+                  </div>
+                  <div class="media-body">
+                    <p><%= order.id %></p>
+                  </div>
+                </div>
+              </td>
+              <td>
+                <h5><%= order.state %></h5>
+              </td>
+              <td>
+                <h5><%= order.total_price %></h5>
 
-<table>
-  <thead>
-    <tr>
-      <th>User</th>
-      <th>Coupon</th>
-      <th>State</th>
-      <th>Order date</th>
-      <th>Confirmation date</th>
-      <th>Deliverable date</th>
-      <th>Address</th>
-      <th>Total price</th>
-      <th>Total price after discount</th>
-      <th colspan="3"></th>
-    </tr>
-  </thead>
+              </td>
+              <td>
+                <h5><%= order.order_date %></h5>
+              </td>
+              <td>
+                <h5><%= order.confirmation_date %></h5>
+              </td>
+              <td>
+                <h5><%= order.deliverable_date %></h5>
+              </td>
+              <td><%= link_to 'Show', order %></td>
+            </tr>
+            <% end %>
 
-  <tbody>
-    <% @orders.each do |order| %>
-      <tr>
-        <td><%= order.user %></td>
-        <td><%= order.coupon %></td>
-        <td><%= order.state %></td>
-        <td><%= order.order_date %></td>
-        <td><%= order.confirmation_date %></td>
-        <td><%= order.deliverable_date %></td>
-        <td><%= order.address %></td>
-        <td><%= order.total_price %></td>
-        <td><%= order.total_price_after_discount %></td>
-        <td><%= link_to 'Show', order %></td>
-        <td><%= link_to 'Edit', edit_order_path(order) %></td>
-        <td><%= link_to 'Destroy', order, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-      </tr>
-    <% end %>
-  </tbody>
-</table>
+          </tbody>
+        </table>
+      </div>
 
-<br>
-
-<%= link_to 'New Order', new_order_path %>
+    </div>
+  </div>
+</section>
+<!--================End Cart Area =================-->
