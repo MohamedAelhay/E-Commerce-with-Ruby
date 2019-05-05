@@ -1,6 +1,7 @@
 class ProductsController < ApplicationController
   caches_page :show
   before_action :set_product, only: [:show, :edit, :update, :destroy]
+  respond_to :html, :json
 
   # GET /products
   # GET /products.json
@@ -10,11 +11,16 @@ class ProductsController < ApplicationController
     @sellers = Store.all
     @brands = Brand.all
     @new_products = Product.last(5)
+    @orderproducts = OrderProduct.all
+    @orders = Order.all
   end
 
   # GET /products/1
   # GET /products/1.json
   def show
+    @products = Product.all
+    @rate_reviews = RateReview.all
+    @users = User.all
   end
 
   # GET /products/new
@@ -88,7 +94,7 @@ class ProductsController < ApplicationController
   end
 
   # DELETE /products/1
-  # DELETE /products/1.json
+  # DELETE /products/1.json  
   def destroy
     @product.destroy
     respond_to do |format|
@@ -107,4 +113,5 @@ class ProductsController < ApplicationController
     def product_params
       params.require(:product).permit(:brand_id, :category_id, :store_id, :title, :description, :image, :price, :quantity)
     end
+
 end

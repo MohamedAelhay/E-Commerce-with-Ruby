@@ -32,7 +32,7 @@
 									<li class="nav-item"><a class="nav-link" href="category.html">Shop Category</a></li>
 									<li class="nav-item"><a class="nav-link" href="single-product.html">Product Details</a></li>
 									<li class="nav-item"><a class="nav-link" href="checkout.html">Product Checkout</a></li>
-									<li class="nav-item"><a class="nav-link" href="cart.html">Shopping Cart</a></li>
+									<%# <li class="nav-item"><a><%= link_to 'Shopping Cart', orders_path, class:"nav-link"</a></li> %>
 									<li class="nav-item"><a class="nav-link" href="confirmation.html">Confirmation</a></li>
 								</ul>
 							</li>
@@ -55,8 +55,12 @@
 						<ul class="nav navbar-nav navbar-right">
 
 							<li class="nav-item">
-								<%= link_to new_user_session_path, class: "cart" do %>
-									<span class="ti-bag"></span>
+								<% if current_user %>
+									<% if current_user.orders.last.state == "cart" %>
+										<%= link_to order_path(current_user.orders.last) do %>
+											<span class="ti-bag"></span>
+										<% end %>
+									<% end %>
 								<% end %>
 							</li>
 

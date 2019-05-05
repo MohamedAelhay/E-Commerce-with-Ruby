@@ -2,6 +2,9 @@ class User < ApplicationRecord
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable
   # attr_accessor :username
+  has_many :rate_reviews
+  has_many :orders
+  
   # scope :sellers, => { 
   #   where(:role_type => "seller") 
   # }
