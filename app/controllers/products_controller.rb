@@ -28,7 +28,7 @@ class ProductsController < ApplicationController
     @product = Product.new
     @categories = Category.all
     @brands = Brand.all
-    @stores = Store.all
+    @stores = Store.where(user_id: current_user.id)
   end
 
   # GET /products/1/edit
@@ -42,10 +42,10 @@ class ProductsController < ApplicationController
   # POST /products.json
   def create
     @product = Product.new(product_params)
-
+    @store = store_path(current_user.id)
     respond_to do |format|
       if @product.save
-        format.html { redirect_to @product, notice: 'Product was successfully created.' }
+        format.html { redirect_to @store, notice: 'Product was successfully created.' }
         format.json { render :show, status: :created, location: @product }
       else
         format.html { render :new }
@@ -81,10 +81,11 @@ class ProductsController < ApplicationController
   # PATCH/PUT /products/1
   # PATCH/PUT /products/1.json
   def update
+    @store = store_path(current_user.id)
     respond_to do |format|
       if @product.update(product_params)
         expire_page product_path(@product)
-        format.html { redirect_to @product, notice: 'Product was successfully updated.' }
+        format.html { redirect_to @store, notice: 'Product was successfully updated.' }
         format.json { render :show, status: :ok, location: @product }
       else
         format.html { render :edit }
@@ -97,8 +98,9 @@ class ProductsController < ApplicationController
   # DELETE /products/1.json  
   def destroy
     @product.destroy
+    @store = store_path(current_user.id)
     respond_to do |format|
-      format.html { redirect_to products_url, notice: 'Product was successfully destroyed.' }
+      format.html { redirect_to @store, notice: 'Product was successfully destroyed.' }
       format.json { head :no_content }
     end
   end

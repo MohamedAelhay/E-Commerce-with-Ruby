@@ -32,18 +32,19 @@
                                     <h5><%= product.quantity %></h5>
                                 </td>
                                 <td>
-                                    <h5>$720.00</h5>
+                                    <%= link_to "Edit", edit_product_path(product), class: "genric-btn info-border circle arrow small"%>
+                                    <%= link_to "Delete", product, method: :delete, data: { confirm: 'Are you sure?' }, class: "genric-btn danger-border circle arrow small"%>
                                 </td>
                             </tr>
                           <% end %>
                             <tr class="out_button_area">
                                 <td></td>
-                                <td></td>
                                 <td>
-                                  <div class="checkout_btn_inner d-flex align-items-center">
+                                    <div class="checkout_btn_inner d-flex align-items-center">
                                         <%= link_to 'New Product', new_product_path, class: "primary-btn" %> 
                                     </div>
                                 </td>
+                                <td></td>
                                 <td>
                                     <div class="checkout_btn_inner d-flex align-items-center">
                                         <%= link_to 'Edit Shop', edit_store_path(@store), class: "primary-btn" %> 

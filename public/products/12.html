@@ -3,10 +3,10 @@
   <head>
     <title>ECommerce</title>
     <meta name="csrf-param" content="authenticity_token" />
-<meta name="csrf-token" content="66N3wCj17qjRjG5Kvcn9hTKjjsn1mAlY7d73zWC/uggH/c6kbQzWeSf7KH2zp0Fvqi0DcWE58fMlBPjLnneuJQ==" />
+<meta name="csrf-token" content="u2zVntaK/X7dzp5VtQqX/V/LCtqKI1hmb5lTgFqTQPtW3EoimiwYDqzfAsTnAqoGhWUmiy5Gk9WzXHLV6FuRFQ==" />
     
 
-    <link rel="stylesheet" media="all" href="/assets/application-100aaff8d70c8aefdcf68660102ccd331a8aa84f38be9cc7c3e96119c6622c78.css" data-turbolinks-track="reload" />
+    <link rel="stylesheet" media="all" href="/assets/application-e1b39582d6cff448be02733aca28f22bac30658ba7f2a756064087b7f568827f.css" data-turbolinks-track="reload" />
     <script src="/assets/application-a3dd945b68d0d15f7ed8e28e1a60f5ce1a12f7c65f62382cb26d9a0111a86146.js" data-turbolinks-track="reload"></script>
   </head>
 
@@ -31,34 +31,29 @@
 							<li class="nav-item">
 							</li>
 							<li class="nav-item">
+									<a class="nav-link" href="/">Seller</a>
 							</li>
-							<li class="nav-item active"><a class="nav-link" href="/">Home</a></li>
-							<li class="nav-item submenu dropdown">
-								<a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true"
-								 aria-expanded="false">Shop</a>
-								<ul class="dropdown-menu">
-									<li class="nav-item"><a class="nav-link" href="category.html">Shop Category</a></li>
-									<li class="nav-item"><a class="nav-link" href="single-product.html">Product Details</a></li>
-									<li class="nav-item"><a class="nav-link" href="checkout.html">Product Checkout</a></li>
-									<li class="nav-item"><a><a class="nav-link" href="/orders">Shopping Cart</a></p></a></li>
-									<li class="nav-item"><a class="nav-link" href="confirmation.html">Confirmation</a></li>
-								</ul>
-							</li>
+								<li class="nav-item submenu dropdown">
+									<a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true"
+									aria-expanded="false">Schuster-Jacobi</a>
+									<ul class="dropdown-menu"> 
+										<li class="nav-item"><a class="nav-link" href="/stores/2">Go To Shop</a></li>
+										<li class="nav-item"><a class="nav-link" href="single-product.html">Orders</a></li>
+									</ul>
+								</li>
 							<li class="nav-item submenu dropdown">
 								<div href="#" class="nav-link dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true"
 								 aria-expanded="false">Account</div>
 								<ul class="dropdown-menu">
-										<li class="nav-item"><a class="nav-link" href="/users/sign_in">Login</a></li>
-										<li class="nav-item"><a class="nav-link" href="/users/sign_up">Sign Up</a></li>
+										<li class="nav-item"><a class="nav-link" href="/users/edit">Edit Account</a></li>
+										<li class="nav-item"><a class="nav-link" rel="nofollow" data-method="delete" href="/users/sign_out">Sign out</a></li>
 								</ul>
 							</li>
 						</ul>
 						<ul class="nav navbar-nav navbar-right">
 
 							<li class="nav-item">
-								<a class="cart" href="/users/sign_in">
-									<span class="ti-bag"></span>
-</a>							</li>
+							</li>
 
 							<li class="nav-item">
 								<button class="search"><span class="lnr lnr-magnifier" id="search"></span></button>
@@ -70,16 +65,13 @@
 		</div>
 		<div class="search_input" id="search_input_box">
 			<div class="container">
-			<div class="d-flex justify-content-between">
-
-			<form action="/products/search" accept-charset="UTF-8" method="get"><input name="utf8" type="hidden" value="&#x2713;" />
-				<input type="text" name="search" id="search_input" placeholder="Search Here" class="form-control" />
-				<input type="submit" name="commit" value="Search" class="btn" data-disable-with="Search" />
-				<span class="lnr lnr-cross" id="close_search" title="Close Search"></span>
-</form>
-			</div>
-			</div>
-			
+				<div class="d-flex justify-content-between">
+					<form action="/products/search" accept-charset="UTF-8" method="get"><input name="utf8" type="hidden" value="&#x2713;" />
+						<input type="text" name="search" id="search_input" placeholder="Search Here" class="form-control" />
+						<input type="submit" name="commit" value="Search" class="btn" data-disable-with="Search" />
+						<span class="lnr lnr-cross" id="close_search" title="Close Search"></span>
+</form>				</div>
+			</div>		
 		</div>
 	</header>
 	<!-- End Header Area -->
@@ -204,24 +196,24 @@
     <div class="row s_product_inner">
       <div class="col-lg-6">
         <div class="single-prd-item">
-          
+          <img class="img-fluid" src="http://localhost:3000/rails/active_storage/blobs/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBCdz09IiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--eaca11f72741f0c69e568fbb48d254797f51df96/59800240_378547003002942_4330691927730028544_n.jpg" />
         </div>
       </div>
 
       <div class="col-lg-5 offset-lg-1">
         <div class="s_product_text">
-          <h3> Xiaomi Mi 8 </h3>
-          <h2> 56.97 </h2>
+          <h3> New Product to the store </h3>
+          <h2> 1000.0 </h2>
           <ul class="list">
-            <li><a class="active" href=""><span>Category</span> Garden </a></li>
+            <li><a class="active" href=""><span>Category</span> Games </a></li>
             <li><a href=""><span>Availibility</span>
                 In Stock
               </a></li>
           </ul>
-          <p> Dolores laboriosam temporibus dolores. </p>
+          <p> neyahahahahah </p>
           <div class="product_count">
             <label for="qty">Quantity:</label>
-            <input type="number" name="qty" id="sst" maxlength="12" min="1" max="18" value="1"
+            <input type="number" name="qty" id="sst" maxlength="12" min="1" max="50" value="1"
               title="Quantity:" class="input-text qty">
             <button
               onclick="var result = document.getElementById('sst'); var sst = result.value; if( !isNaN( sst )) result.value++;return false;"
@@ -237,7 +229,7 @@
           </div>
           <div>
             <a>
-              <a class="gray_btn" href="/products/7/edit">Edit</a>
+              <a class="gray_btn" href="/products/12/edit">Edit</a>
             </a>
             <a>
               <a class="gray_btn" href="/products">Back</a>
@@ -267,20 +259,20 @@
 
     <div class="tab-content" id="myTabContent">
       <div class="tab-pane fade" id="home" role="tabpanel" aria-labelledby="home-tab">
-        <p> Dolores laboriosam temporibus dolores. </p>
+        <p> neyahahahahah </p>
         <p>
           <strong>Brand:</strong>
-          Electrolux
+          Sharp
         </p>
 
         <p>
           <strong>Category:</strong>
-          Garden
+          Games
         </p>
 
         <p>
           <strong>Store:</strong>
-          Ebert-Yost
+          Schuster-Jacobi
         </p>
       </div>
 
@@ -477,7 +469,7 @@
     <script src="/assets/js/nouislider.min-8dbd9c5b718a7c2b3f91b1a4cfa1ba8c557ae54294d4e7e09802dc20c0351c55.js" data-turbolinks-track="reload"></script>
     <script src="/assets/js/jquery.magnific-popup.min-b29d983d739362882b1c8a48784521362dc73c717bf1f1f74371113fb8e443fa.js" data-turbolinks-track="reload"></script>
     <script src="/assets/js/owl.carousel.min-3c9f9dac2a281d1090601a8896fe59fb9df20f261295bbe087f2a0f56ef7e8d9.js" data-turbolinks-track="reload"></script>
-    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCjCGmQ0Uq4exrzdcL6rvxywDDOvfAu6eE" data-turbolinks-track="reload"></script>
+    
     <script src="/assets/js/gmaps.min-8fb3181adfb3c2f003d3e0e12dc2d01b1b618b6ff8d229f5ab46e613cb61b747.js" data-turbolinks-track="reload"></script>
     <script src="/assets/js/main-610b0247f93a9a8956e356d50656e09d53ffbd402a5ab6b7a3fcfbcc9482ddc4.js" data-turbolinks-track="reload"></script>
 
