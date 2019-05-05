@@ -56,10 +56,12 @@
 
 							<li class="nav-item">
 								<% if current_user %>
+								<% if current_user.orders.last%>
 									<% if current_user.orders.last.state == "cart" %>
 										<%= link_to order_path(current_user.orders.last) do %>
 											<span class="ti-bag"></span>
 										<% end %>
+									<% end %>
 									<% end %>
 								<% end %>
 							</li>
