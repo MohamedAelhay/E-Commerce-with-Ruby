@@ -1,19 +1,62 @@
-<p id="notice"><%= notice %></p>
+<div id="notice"><%= notice %></div>
 
-<p>
-  <strong>User:</strong>
-  <%= @store.user %>
-</p>
+<section class="cart_area">
+        <div class="container">
+            <div class="cart_inner">
+                <div class="table-responsive">
+                    <table class="table">
+                        <thead>
+                            <tr>
+                                <th scope="col">Product</th>
+                                <th scope="col">Price</th>
+                                <th scope="col">Quantity</th>
+                                <th scope="col">Options</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                          <% @products.each do |product|%>
+                            <% if !product.is_deleted%>
+                                <tr>
+                                    <td>
+                                        <div class="media">
+                                            <div class="d-flex">
+                                            </div>
+                                            <div class="media-body">
+                                                <p><%= product.title %></p>
+                                            </div>
+                                        </div>
+                                    </td>
+                                    <td>
+                                        <h5>$<%= product.price %></h5>
+                                    </td>
+                                    <td>
+                                        <h5><%= product.quantity %></h5>
+                                    </td>
+                                    <td>
+                                        <%= link_to "Edit", edit_product_path(product), class: "genric-btn info-border circle arrow small"%>
+                                        <%= link_to "Delete", product, method: :delete, data: { confirm: 'Are you sure?' }, class: "genric-btn danger-border circle arrow small"%>
+                                    </td>
+                                </tr>
+                            <% end %>
+                          <% end %>
+                            <tr class="out_button_area">
+                                <td></td>
+                                <td>
+                                    <div class="checkout_btn_inner d-flex align-items-center">
+                                        <%= link_to 'New Product', new_product_path, class: "primary-btn" %> 
+                                    </div>
+                                </td>
+                                <td></td>
+                                <td>
+                                    <div class="checkout_btn_inner d-flex align-items-center">
+                                        <%= link_to 'Edit Shop', edit_store_path(@store), class: "primary-btn" %> 
+                                    </div>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </section>
 
-<p>
-  <strong>Name:</strong>
-  <%= @store.name %>
-</p>
-
-<p>
-  <strong>Summary:</strong>
-  <%= @store.summary %>
-</p>
-
-<%= link_to 'Edit', edit_store_path(@store) %> |
-<%= link_to 'Back', stores_path %>

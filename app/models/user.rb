@@ -4,6 +4,7 @@ class User < ApplicationRecord
   # attr_accessor :username
   has_many :rate_reviews
   has_many :orders
+  has_one :store
   
   # scope :sellers, => { 
   #   where(:role_type => "seller") 
