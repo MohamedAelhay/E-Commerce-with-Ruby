@@ -1,5 +1,5 @@
 class StoresController < ApplicationController
-  before_action :set_store, only: [:show, :edit, :update, :destroy]
+  before_action :set_store, only: [ :edit, :update, :destroy]
 
   # GET /stores
   # GET /stores.json
@@ -10,6 +10,8 @@ class StoresController < ApplicationController
   # GET /stores/1
   # GET /stores/1.json
   def show
+    @store = Store.find_by_user_id(params[:id])
+    @products = Product.where(store_id: @store.id)
   end
 
   # GET /stores/new

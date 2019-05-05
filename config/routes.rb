@@ -20,12 +20,12 @@ Rails.application.routes.draw do
   resources :products
   namespace :admin do
     resources :coupons
-    resources :stores
     resources :categories
     resources :brands
     resources :user_coupons
   end
-  
+  resources :stores
+
   devise_for :users
   root 'products#index'
 
