@@ -202,8 +202,6 @@
                             <th scope="col">Product</th>
                             <th scope="col">Price</th>
                             <th scope="col">Quantity</th>
-                            <th scope="col">Status</th>
-                            <th scope="col">Total</th>
                           </tr>
                       </thead>
                       <tbody>
@@ -212,8 +210,6 @@
                             <td scope="col"><h5><%= prod.product.title %></h5></td>
                             <td scope="col"><%= prod.product.price %></td>
                             <td scope="col"><%= prod.Product_quantity %></td>
-                            <td scope="col"><%= prod.order.state %></td>
-                            <td scope="col"><%= @total_price %></td>
                         </tr>
                         <% end %>
                       </tbody>
