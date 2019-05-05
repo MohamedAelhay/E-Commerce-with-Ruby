@@ -63,7 +63,7 @@
                                   </div>
                               </td>
                               <td>
-                                  <h5><%= @each_total[index] %></h5>
+                                  <h5><%= "$#{@each_total[index]}" %></h5>
                               </td>
                               <td>
                                   <a>
@@ -112,7 +112,7 @@
                               <td></td>
 
                               <td>
-                                  <p><%= @total_before %></p> 
+                                  <p><%= "$#{@total_before}" %></p> 
                               </td>
                           </tr>
 
@@ -146,7 +146,7 @@
                               <td>
                                   <div class="shipping_box">
                                       <ul class="list">
-                                          <h5><%= @total_after %></h5>
+                                          <h5><%= "$#{@total_after}" %></h5>
                                       </ul>
                                   </div>
                               </td>
