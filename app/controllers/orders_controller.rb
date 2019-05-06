@@ -114,6 +114,31 @@ class OrdersController < ApplicationController
     total_price.to_f
   end
 
+  def quantity_operations
+    @order = current_user.orders.last
+    if @order.state == "cart"
+      @product = @order.order_products.find_by(product_id: params[:product_id])
+      if (params[:operator] === "+")
+        @product.increment(:Product_quantity,1)
+        @product.save
+      else
+        if (@product.Product_quantity > 1)
+          @product.decrement(:Product_quantity,1)
+          @product.save
+        else
+          @product.destroy
+          @product.save
+          if (@order.order_products.size == 0)
+            redirect_to "/"
+            return
+          end
+        end
+      end
+    end
+    redirect_to "orders/#{params[:id]}"
+
+  end
+
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_order
