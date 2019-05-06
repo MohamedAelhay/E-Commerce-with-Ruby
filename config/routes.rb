@@ -3,7 +3,6 @@ Rails.application.routes.draw do
     collection do
       get :search
     end
-
     collection do
       get :filter
     end
@@ -25,9 +24,14 @@ Rails.application.routes.draw do
     resources :user_coupons
   end
   resources :stores
-
   devise_for :users
   root 'products#index'
+  namespace :api do
+    scope module: :v1 , path: 'v1'do
+      # We are going to list our resources here
+      resources :products
+    end
 
+  end
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 end
