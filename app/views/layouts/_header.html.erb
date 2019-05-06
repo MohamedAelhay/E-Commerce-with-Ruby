@@ -31,7 +31,7 @@
 									<a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true"
 									aria-expanded="false"><%= current_user.store.name %></a>
 									<ul class="dropdown-menu"> 
-										<li class="nav-item"><%= link_to "Go To Shop", store_path(current_user.id), class:"nav-link"%></li>
+										<li class="nav-item"><%= link_to "Go To Shop", store_path(current_user.store.id), class:"nav-link"%></li>
 										<li class="nav-item"><a class="nav-link" href="single-product.html">Orders</a></li>
 										<%# <li class="nav-item"><a><%= link_to 'Shopping Cart', orders_path, class:"nav-link"</a></li> %>
 									</ul>

@@ -1,7 +1,9 @@
 class ProductsController < ApplicationController
   caches_page :show
   before_action :set_product, only: [:show, :edit, :update, :destroy]
+  before_action :authenticate_user!, except: [:index, :show]
   respond_to :html, :json
+  load_and_authorize_resource
 
   # GET /products
   # GET /products.json

@@ -107,7 +107,7 @@
 				</div>
           <div class="row">
           <% @products.each do |product| %>
-            <% if product.category.name == category.name %>
+            <% if product.category.name == category.name && !product.is_deleted %>
               <!-- single product -->
               <div class="col-lg-3 col-md-6">
                 <div class="single-product">
@@ -127,11 +127,13 @@
                         <span class="lnr lnr-heart"></span>
                         <p class="hover-text">Wishlist</p>
                       </div>
-                      <div class="social-info">
-                      <span class="lnr lnr-move"></span>
-                      <p class="hover-text">
-                      <%= link_to 'view more', product_path(product)%></p>
-                      </div>
+                      <% if can? :read, product %>
+                        <div class="social-info">
+                        <span class="lnr lnr-move"></span>
+                        <p class="hover-text">
+                        <%= link_to 'view more', product_path(product)%></p>
+                        </div>
+                      <% end %>
                       <div href="" class="social-info">
                         <span class="lnr lnr-sync"></span>
                         <p class="hover-text">compare</p>
