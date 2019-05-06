@@ -18,9 +18,6 @@ class ProductsController < ApplicationController
   # GET /products/1
   # GET /products/1.json
   def show
-    @products = Product.all
-    @rate_reviews = RateReview.all
-    @users = User.all
   end
 
   # GET /products/new
