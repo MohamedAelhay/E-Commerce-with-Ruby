@@ -120,6 +120,9 @@ class OrdersController < ApplicationController
       @product = @order.order_products.find_by(product_id: params[:product_id])
       if (params[:operator] === "+")
         @product.increment(:Product_quantity,1)
+        if (@product.Product_quantity >== Product.find_by(id: params[:product_id]).quantity)
+          puts "Limit exceeded"
+        end
         @product.save
       else
         if (@product.Product_quantity > 1)
