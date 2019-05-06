@@ -113,7 +113,6 @@ ActiveRecord::Schema.define(version: 2019_05_05_181408) do
     t.bigint "store_id"
     t.string "title"
     t.text "description"
-    t.string "image"
     t.float "price"
     t.integer "quantity"
     t.datetime "created_at", null: false
@@ -160,7 +159,7 @@ ActiveRecord::Schema.define(version: 2019_05_05_181408) do
     t.datetime "reset_password_sent_at"
     t.datetime "remember_created_at"
     t.string "username", null: false
-    t.string "role_type", default: "Buyer", null: false
+    t.string "role_type", default: "buyer", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["email"], name: "index_users_on_email", unique: true
