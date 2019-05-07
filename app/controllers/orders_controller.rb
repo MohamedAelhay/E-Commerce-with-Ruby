@@ -1,7 +1,7 @@
 class OrdersController < ApplicationController
   before_action :set_order, only: [:show, :edit, :update, :destroy, :total_price, :total_before_shipping, :total_after_shipping]
   before_action :set_order_product, only: [:remove_product]
-
+  
   # GET /orders
   # GET /orders.json
   def index
@@ -112,6 +112,49 @@ class OrdersController < ApplicationController
   def calculate_total_after_shipping(total_before)
     total_price = 2.00 + total_before
     total_price.to_f
+  end
+  def add_to_cart
+    if(!current_user)
+      redirect_to "/users/sign_in"
+      return
+    end
+    @lastOrder=current_user.orders.last
+    if(@lastOrder.nil? || @lastOrder.state !="cart")
+      @order=current_user.orders.new(:state => "cart")
+      @order.save
+    end  
+    @product=current_user.orders.last.order_products.find_by(product_id: params[:id])
+    if(@product.nil?) 
+      @product=current_user.orders.last.order_products.new(product_id: params[:id],	Product_quantity: 1)
+      @product.save
+    else
+      @product.increment(:Product_quantity,1) 
+      @product.save
+    end 
+    render json:   @product.Product_quantity
+  end
+  def removeFromCart
+    if(!current_user)
+      redirect_to "/users/sign_in"
+      return
+    end
+    @new_quantity=0
+    @orders=current_user.orders
+     if(@orders.size >0 && @orders.last.state=="cart")
+        @cart=@orders.last
+        @product= @cart.order_products.find_by(product_id: params[:id])
+        if(!@product.nil?)
+            if(@product.Product_quantity>1)
+                @product.decrement(:Product_quantity,1)
+                @product.save
+                @new_quantity=@product.Product_quantity
+            elsif(@product.Product_quantity==1) 
+                @product.destroy
+                @product.save   
+            end
+        end
+     end
+    render json:  @new_quantity
   end
 
   private
