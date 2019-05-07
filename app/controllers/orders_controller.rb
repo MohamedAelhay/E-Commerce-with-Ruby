@@ -13,8 +13,6 @@ class OrdersController < ApplicationController
   def show
     if ( Order.find_by(id: params[:id]).state == "cart" )
       @orders = Order.find_by(user_id: current_user.id, state: "cart")
-      @order_products = OrderProduct.all
-      @products = Product.all
 
       @status = "cart"
 
@@ -25,7 +23,11 @@ class OrdersController < ApplicationController
       end
 
       @total_before = calculate_products_total(@orders)
-      @total_after_discount = calculate_total_after_discount(@total_before,@orders)
+      
+    
+      @total_after_discount = 0
+
+      
       @total_after = calculate_total_after_shipping(@total_before)
 
     else
@@ -105,10 +107,6 @@ class OrdersController < ApplicationController
     total_price.to_f
   end
 
-  def calculate_total_after_discount(total_before,orders)
-    total_price = 0.00
-  end
-
   def calculate_total_after_shipping(total_before)
     total_price = 2.00 + total_before
     total_price.to_f
@@ -120,11 +118,11 @@ class OrdersController < ApplicationController
       @product = @order.order_products.find_by(product_id: params[:product_id])
       if (params[:operator] === "+")
         @product.increment(:Product_quantity,1)
-        if (@product.Product_quantity >== Product.find_by(id: params[:product_id]).quantity)
-          puts "Limit exceeded"
+        if (@product.Product_quantity >= Product.find_by(id: params[:product_id]).quantity)
+          @limit_exceed = "Limit exceeded"
         end
         @product.save
-      else
+      elsif (params[:operator] === "-")
         if (@product.Product_quantity > 1)
           @product.decrement(:Product_quantity,1)
           @product.save
@@ -138,8 +136,59 @@ class OrdersController < ApplicationController
         end
       end
     end
-    redirect_to "orders/#{params[:id]}"
+    redirect_to "/orders/#{params[:id]}"
+    return
+  end
 
+  def apply_coupon
+    if ( Order.find_by(id: params[:id]).state == "cart" )
+      @orders = Order.find_by(user_id: current_user.id, state: "cart")
+
+      @status = "cart"
+
+      @single_order_products = OrderProduct.where(order_id: @orders.id)
+      @each_total = []
+      @single_order_products.each do |single_product|
+        @each_total.push(calculate_total_price(single_product))
+      end
+
+      @total_before = calculate_products_total(@orders)
+      
+    
+      @total_after_discount = validate_coupon(params[:coupon_code],@total_before)
+
+      
+      @total_after = calculate_total_after_shipping(@total_before)
+
+    else
+      @total_price = Order.find_by(id: params[:id]).total_price
+      @order_products = OrderProduct.where(order_id: params[:id])
+
+      @status = "not cart"
+    end
+    render json: @total_after_discount
+
+  end
+
+  def validate_coupon(code,total_before)
+      @is_taken = false
+      @is_valid = true
+      @new_total = 0.00
+      if Coupon.isValid(code)
+        # if code is valid
+        if UserCoupon.taken_before(current_user.id,code)
+          #if code is taken before
+          @is_taken = true
+        else
+          #if code is not taken before
+          @new_total = Coupon.after_discount(total_before,code).to_f
+        end
+        @is_valid = true
+        @new_total
+      else
+        #if code is not valid
+        @is_valid = false
+      end
   end
 
   private
