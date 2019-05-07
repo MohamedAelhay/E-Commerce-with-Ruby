@@ -14,6 +14,16 @@ class Ability
       can :read, Product, is_deleted: false
       can :create, Product
       can [:read, :manage], Store, user_id: user.id
+      @store = Store.find_by(user_id: user.id)
+      @products = Product.where(store_id: user.id)
+      
+      can :update, Order do |order| 
+        if order.state != "cart"
+          order.products.each do |product| 
+            @products.include?(product)
+          end
+        end
+      end 
 
       can [:update, :destroy], Product do |pro|
         pro.store.user_id == user.id
