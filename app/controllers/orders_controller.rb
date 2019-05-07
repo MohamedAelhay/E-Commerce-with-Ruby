@@ -47,6 +47,7 @@ class OrdersController < ApplicationController
 
   # GET /orders/1/edit
   def edit
+    authorize! :edit, @order
   end
 
   # POST /orders

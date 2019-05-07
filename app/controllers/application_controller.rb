@@ -7,6 +7,8 @@ class ApplicationController < ActionController::Base
         store_path(current_user.store.id)
       elsif current_user.role_type == "buyer"
         root_path
+      else
+        root_path
       end
     end
 
