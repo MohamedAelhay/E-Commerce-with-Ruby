@@ -2,6 +2,27 @@ class Ability
   include CanCan::Ability
 
   def initialize(user)
+    user ||= User.new
+
+    if user.role_type == "buyer"
+      can [:read, :search, :filter], Product, is_deleted: false
+      can [:read, :create, :update, :destroy], Order, [user_id: user.id, state: "cart"]
+      can :read, Order, [user_id: user.id, state: !"cart" ]
+      
+    elsif user.role_type == "seller"
+      can :read, Product, is_deleted: false
+      can :create, Product
+      can [:read, :manage], Store, user_id: user.id
+
+      can [:update, :destroy], Product do |pro|
+        pro.store.user_id == user.id
+      end
+
+    else
+      can [:read, :search, :filter], Product, is_deleted: false
+
+    end
+
     # Define abilities for the passed in user here. For example:
     #
     #   user ||= User.new # guest user (not logged in)
