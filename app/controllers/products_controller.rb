@@ -86,6 +86,10 @@ class ProductsController < ApplicationController
       @categories = Category.all
       @sellers = Store.all
       @brands = Brand.all
+      @category_name = Category.find(params[:category]).name if params[:category].present?
+      @brand_name = Brand.find(params[:brand]).name if params[:brand].present?
+      @store_name = Store.find(params[:seller]).name if params[:seller].present?
+      @price_range = params[:price].keys.first  if params[:price].present?
     end
   end
 

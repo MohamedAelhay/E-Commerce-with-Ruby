@@ -40,6 +40,24 @@
             </div>
         </div>
         <div class="col-xl-9 col-lg-8 col-md-7">
+            <div class="col-xl-9 col-lg-8 col-md-7">
+                <div class="row justify-content-center">
+                    <div class="col-lg-6 text-center">
+                    <div class="section-title">
+                        <% if params[:category] %>
+                        <h1> <%= @category_name %> </h1>
+                        <% elsif params[:brand] %>
+                        <h1> <%= @brand_name %> </h1>
+
+                        <% elsif params[:seller] %>
+                        <h1> <%= @store_name %> </h1>
+                        
+                        <% elsif params[:price] %>
+                        <h1> Less than <%= @price_range %> </h1>
+                        <% end %>
+                    </div>
+                </div>
+            </div>
             <!-- Start Best Seller -->
             <section class="lattest-product-area pb-40 category-list">
                 <div class="row">
