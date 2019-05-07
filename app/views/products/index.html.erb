@@ -52,6 +52,7 @@
             <section class="lattest-product-area pb-40 category-list">
                 <div class="row">
                     <% @new_products.each do |new_product| %>
+                    <% if !new_product.is_deleted %>
                     <!-- single product -->
                     <div class="col-lg-4 col-md-6">
                         <div class="single-product">
@@ -86,6 +87,7 @@
                             </div>
                         </div>
                     </div>
+                    <% end %>
                     <% end %>
                 </div>
             </section>
@@ -124,7 +126,9 @@
 
                       <div href="" class="social-info">
                         <span class="ti-bag"></span>
-                        <p class="hover-text">add to bag</p>
+                        <%=form_tag("/products/#{product.id}/addToCart", remote: true, 'data-type' => :json,id: 'addToCart' ) do%>
+                                              <%= submit_tag("add to cart ", :class => "hover-text btn-link") %>
+                                        <%end%>
                       </div>
                       <div href="" class="social-info">
                         <span class="lnr lnr-heart"></span>

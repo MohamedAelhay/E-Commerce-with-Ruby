@@ -43,13 +43,14 @@
 								<ul class="dropdown-menu">
 									<% if current_user %>
 										<% if current_user.role_type == "buyer" %>
-											<li class="nav-item"><a class="nav-link" href="tracking.html">Tracking Orders</a></li>
+											<li class="nav-item"><%= link_to "Tracking Orders", orders_path, class:"nav-link"%></li>
 										<% end %>
 										<li class="nav-item"><%= link_to "Edit Account", edit_user_registration_path, class:"nav-link"%></li>
 										<li class="nav-item"><%= link_to "Sign out", destroy_user_session_path, class:"nav-link", method: "delete"%></li>
 									<% else %>
 										<li class="nav-item"><%= link_to "Login", new_user_session_path, class:"nav-link"%></li>
 										<li class="nav-item"><%= link_to "Sign Up", new_user_registration_path, class:"nav-link"%></li>
+										<li class="nav-item"><%= link_to "Admin Login", new_admin_user_session_path, class:"nav-link"%></li>
 									<% end %>
 								</ul>
 							</li>
