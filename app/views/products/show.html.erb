@@ -198,6 +198,7 @@
     </div>
   </div>
 </section>
+
 <%=form_tag("/products/#{@product.id}/addToCart", remote: true, 'data-type' => :json) do%>
    <%= submit_tag("add to cart ") %>
 <%end%>
