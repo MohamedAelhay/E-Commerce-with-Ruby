@@ -5,12 +5,12 @@ class User < ApplicationRecord
   has_many :rate_reviews
   has_many :orders
   has_one :store
-  
+  RULE_OPTIONS = %w(seller buyer)
+  validates :role_type, :inclusion => {:in => RULE_OPTIONS}
   # scope :sellers, => { 
   #   where(:role_type => "seller") 
   # }
-  # RULE_OPTIONS = %w(seller buyer)
-  # validates :role_type, :inclusion => {:in => RULE_OPTIONS}
+  
   has_one_attached :image
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable
