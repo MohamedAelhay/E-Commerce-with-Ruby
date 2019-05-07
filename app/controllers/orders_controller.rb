@@ -1,7 +1,8 @@
 class OrdersController < ApplicationController
   before_action :set_order, only: [:show, :edit, :update, :destroy, :total_price, :total_before_shipping, :total_after_shipping]
   before_action :set_order_product, only: [:remove_product]
-  
+  # load_and_authorize_resource
+
   # GET /orders
   # GET /orders.json
   def index
@@ -89,8 +90,8 @@ class OrdersController < ApplicationController
   end
 
   def remove_product
-    @order_product.destroy
-    redirect_to order_path(@order_product.order_id)
+    @order_product[0].destroy
+    redirect_to order_path(@order_product[0].order_id)
   end
 
   def calculate_total_price(single_product)
@@ -241,7 +242,7 @@ class OrdersController < ApplicationController
     end
 
     def set_order_product
-      @order_product = OrderProduct.find(params[:id])
+      @order_product = OrderProduct.where(order_id: params[:format], product_id: params[:id])
     end
     # Never trust parameters from the scary internet, only allow the white list through.
     def order_params

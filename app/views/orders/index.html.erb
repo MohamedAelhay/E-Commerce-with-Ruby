@@ -34,6 +34,7 @@
           </thead>
           <tbody>
             <% @orders.each do |order| %>
+              <% if order.state != "cart" %>
             <tr>
               <td>
                 <div class="media">
@@ -64,7 +65,7 @@
               <td><%= link_to 'Show', order %></td>
             </tr>
             <% end %>
-
+          <% end %>
           </tbody>
         </table>
       </div>

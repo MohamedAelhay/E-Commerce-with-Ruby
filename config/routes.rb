@@ -33,13 +33,13 @@ Rails.application.routes.draw do
       # We are going to list our resources here
       resources :products
     end
-
+  end
   post '/orders/:id' , to: 'orders#quantity_operations'
   # post '/orders/:id' , to: 'orders#validate_coupon'
   post '/orders/:id/apply_coupon', to:'orders#apply_coupon'
 
   # post 'products', to: 'products#add_to_cart'
 
-  end
+  
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 end

@@ -126,7 +126,9 @@
 
                       <div href="" class="social-info">
                         <span class="ti-bag"></span>
-                        <p class="hover-text">add to bag</p>
+                        <%=form_tag("/products/#{product.id}/addToCart", remote: true, 'data-type' => :json,id: 'addToCart' ) do%>
+                                              <%= submit_tag("add to cart ", :class => "hover-text btn-link") %>
+                                        <%end%>
                       </div>
                       <div href="" class="social-info">
                         <span class="lnr lnr-heart"></span>
