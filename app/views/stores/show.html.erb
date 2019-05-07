@@ -33,8 +33,10 @@
                                         <h5><%= product.quantity %></h5>
                                     </td>
                                     <td>
+                                        <% if can? :edit, product %>
                                         <%= link_to "Edit", edit_product_path(product), class: "genric-btn info-border circle arrow small"%>
                                         <%= link_to "Delete", product, method: :delete, data: { confirm: 'Are you sure?' }, class: "genric-btn danger-border circle arrow small"%>
+                                        <% end %>
                                     </td>
                                 </tr>
                             <% end %>
