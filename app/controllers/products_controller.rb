@@ -1,5 +1,5 @@
 class ProductsController < ApplicationController
-  caches_page :show
+  #caches_page :show
   before_action :set_product, only: [:show, :edit, :update, :destroy]
   respond_to :html, :json
 
@@ -18,9 +18,18 @@ class ProductsController < ApplicationController
   # GET /products/1
   # GET /products/1.json
   def show
-    @products = Product.all
-    @rate_reviews = RateReview.all
-    @users = User.all
+    @cart_quantity=0
+    if(current_user)
+      @lastOrder=current_user.orders
+      if(@lastOrder.size != 0)
+          @last=@lastOrder.last
+        if( @last.state =="cart")
+          @cart_product=@last.order_products.find_by(product_id: params[:id])
+          @cart_quantity=@cart_product.Product_quantity unless @cart_product.nil?
+        end
+      end     
+    end
+
   end
 
   # GET /products/new
@@ -104,7 +113,8 @@ class ProductsController < ApplicationController
       format.json { head :no_content }
     end
   end
-
+def test
+end
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_product
