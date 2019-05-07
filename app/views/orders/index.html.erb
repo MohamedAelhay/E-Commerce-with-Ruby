@@ -34,7 +34,8 @@
           </thead>
           <tbody>
             <% @orders.each do |order| %>
-            <% if order.state != "cart" %>
+
+            <% if can? :read, order %>
             <tr>
               <td>
                 <div class="media">

@@ -217,11 +217,6 @@
 
 
 <% elsif %>
-<% if cannot? :read, @orders %>
-    <script type="text/javascript">
-        window.location.href="/"  // put your correct path in a string here
-    </script>
-<% else %>
 <!--================Each Product in Specific Order Details Area =================-->
 <section class="cart_area">
     <div class="container">
@@ -254,7 +249,7 @@
 </section>
 <!--================End Each Product in Specific Order Details Area =================-->
 <% end %>
-<% end %>
+
 <script>
   $(document).ready(function(){
     $("form#apply_coupon").on('ajax:success', function(event, data, status, xhr) {
