@@ -16,13 +16,237 @@
 
 <% if @status == "cart" %>
 <!--================Cart Area =================-->
-<%= render 'orders/cart' %>
+<section class="cart_area">
+    <div class="container">
+        <div class="cart_inner">
+            <h1>Order Number : <%= @orders.id %> </h1>
+            <div class="table-responsive">
+                <table class="table">
+                    <thead>
+                        <tr>
+                            <th scope="col">Product</th>
+                            <th scope="col">Price</th>
+                            <th scope="col">Quantity</th>
+                            <th scope="col">Total</th>
+                            <th scope="col"></th>
+                        </tr>
+                    </thead>
+
+                    <tbody>
+                        <% @orders.order_products.each.with_index do |order, index| %>
+                        <tr>
+                            <td>
+                                <div class="media">
+                                    <div class="d-flex">
+                                        <img src="img/cart.jpg" alt="">
+                                    </div>
+                                    <div class="media-body">
+                                        <p><%= order.product.title %></p>
+                                    </div>
+                                </div>
+                            </td>
+
+                            <td>
+                                <h5><%= "$#{order.product.price}" %></h5>
+                            </td>
+
+                            <td>
+                                <div class="product_count">
+                                    <%# <input type="text" name="qty" id="sst" maxlength="12" value="1" title="Quantity:"
+                                            class="input-text qty"> %>
+                                    <p class="input-text qty"><%= order.Product_quantity  %><p>
+                                            <%= form_tag( controller: "orders", action: "quantity_operations", method: "post") do %>
+                                            <%= hidden_field_tag 'product_id', order.product.id %>
+                                            <%= hidden_field_tag 'operator', "+" %>
+                                            <%= button_tag type: 'submit', class:"increase items-count" do %>
+                                            <i class="lnr lnr-chevron-up"></i>
+                                            <% end %>
+                                            <% end %>
+
+                                            <%= form_tag( controller: "orders", action: "quantity_operations", method: "post") do%>
+                                            <%= hidden_field_tag 'product_id', order.product.id %>
+                                            <%= hidden_field_tag 'operator', "-" %>
+                                            <%= button_tag type: 'submit', class:"reduced items-count" do %>
+                                            <i class="lnr lnr-chevron-down"></i>
+                                            <% end %>
+                                            <% end %>
+                                </div>
+                            </td>
+
+                            <td>
+                                <h5><%= "$#{@each_total[index]}" %></h5>
+                            </td>
+
+                            <td>
+                                <a>
+                                    <%= link_to image_tag("/assets/delete.png", :style => "width:40px;height:30px;"), 
+                                        remove_product_order_path(order.product_id, order.order_id), method: :delete, data: { confirm: 'Are you sure?' }%>
+                                </a>
+                            </td>
+                        </tr>
+                        <%end%>
+
+                        <tr class="bottom_button">
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td>
+                                <div class="cupon_text d-flex align-items-center">
+                                    <%=form_tag("/orders/#{@order.id}/apply_coupon", remote: true, 'data-type' => :json , id: 'apply_coupon' ) do%>
+                                        <%= text_field_tag 'coupon_code' , nil, class: "form-control", placeholder: "Coupon Code" %>
+                                        <%= submit_tag("Apply", :class => "primary-btn") %>
+                                    <%end%>
+
+                                </div>
+                                <p> <%= debug @p %></p>
+                                <br>
+                            </td>
+
+                            <td></td>
+                        </tr>
+
+                        <%= form_tag(controller: "orders", action: "show", method: "post") do %>
+                        <tr>
+                            <td></td>
+                            <td></td>
+
+                            <td>
+                                <h5><%= label_tag("Discount amount") %></h5>
+                            </td>
+                            <td></td>
+
+                            <td>
+                                <% if (@taken != true)%>
+                                <p id="discount"> </p>
+                                <span> discount
+                                </span> 
+                                <% end %>
+                            </td>
+                        </tr>
+
+                        <tr>
+                            <td></td>
+                            <td></td>
+
+                            <td>
+                                <h5><%= label_tag("Subtotal")%></h5>
+                            </td>
+                            <td></td>
+
+                            <td>
+                                <p><%= "$#{@total_before}" %></p>
+                            </td>
+                        </tr>
+
+                        <tr class="shipping_area">
+                            <td></td>
+                            <td></td>
+
+                            <td>
+                                <h5><%= label_tag("Shipping")%></h5>
+                            </td>
+                            <td></td>
+
+                            <td>
+                                <div class="shipping_box">
+                                    <ul class="list">
+                                        <p><%= label_tag("Local Delivery: $2.00")%></p>
+                                    </ul>
+                                </div>
+                            </td>
+                        </tr>
+
+                        <tr class="shipping_area">
+                            <td></td>
+                            <td></td>
+
+                            <td>
+                                <h5><%= label_tag("Total")%></h5>
+                            </td>
+                            <td></td>
+
+                            <td>
+                                <div class="shipping_box">
+                                    <ul class="list">
+                                        <h5><%= "$#{@total_after}" %></h5>
+                                    </ul>
+                                </div>
+                            </td>
+                        </tr>
+
+                        <tr class="shipping_area">
+                            <td></td>
+                            <td></td>
+
+                            <td>
+                                <h5><%= label_tag("Address")%></h5>
+                            </td>
+                            <td></td>
+
+                            <td>
+                                <div class="shipping_box">
+                                    <textarea rows="4" col="50"></textarea>
+                                </div>
+                            </td>
+                        </tr>
+
+                        <tr class="out_button_area">
+                            <td></td>
+                            <td></td>
+                            <td></td>
+
+                            <td>
+                                <div class="checkout_btn_inner d-flex align-items-center">
+                                    <a>
+                                        <%= link_to 'Continue Shopping', products_path, class:"gray_btn" %>
+                                    </a>
+                                    <%= submit_tag("Proceed to checkout", :class=>"primary-btn")%>
+                                    <%# <a class="primary-btn" href="#">Proceed to checkout</a> %>
+                                </div>
+                            </td>
+                        </tr>
+                        <% end %>
+                    </tbody>
+                </table>
+            </div>
+
+        </div>
+    </div>
+</section>
 <!--================End Cart Area =================-->
 
 
 <% elsif %>
 <!--================Each Product in Specific Order Details Area =================-->
-<%= render 'orders/product_details' %>
+<section class="cart_area">
+    <div class="container">
+        <div class="cart_inner">
+            <div class="table-responsive">
+                <table class="table">
+                    <thead>
+                        <tr>
+                            <th scope="col">Product</th>
+                            <th scope="col">Price</th>
+                            <th scope="col">Quantity</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <% @order_products.each do |prod| %>
+                        <tr>
+                            <td scope="col">
+                                <h5><%= prod.product.title %></h5>
+                            </td>
+                            <td scope="col"><%= prod.product.price %></td>
+                            <td scope="col"><%= prod.Product_quantity %></td>
+                        </tr>
+                        <% end %>
+                    </tbody>
+                </table>
+            </div>
+
+        </div>
+    </div>
+</section>
 <!--================End Each Product in Specific Order Details Area =================-->
 <% end %>
 
