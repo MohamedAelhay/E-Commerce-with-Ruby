@@ -20,8 +20,6 @@ class ProductsController < ApplicationController
   # GET /products/1
   # GET /products/1.json
   def show
-<<<<<<< HEAD
-=======
     @cart_quantity=0
     if(current_user)
       @lastOrder=current_user.orders
@@ -34,7 +32,6 @@ class ProductsController < ApplicationController
       end     
     end
 
->>>>>>> cb79d83b60acc0d9e10bfc71cdb73c4479551bac
   end
 
   # GET /products/new
