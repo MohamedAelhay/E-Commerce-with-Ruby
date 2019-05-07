@@ -5,6 +5,8 @@ class OrderProductsController < ApplicationController
   # GET /order_products
   # GET /order_products.json
   def index
+    @store = Store.find_by(user_id: current_user.id)
+    @products = Product.where(store_id: @store.id)
     @order_products = OrderProduct.all
   end
 

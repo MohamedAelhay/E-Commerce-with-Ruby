@@ -1,31 +1,47 @@
-<p id="notice"><%= notice %></p>
+<div id="notice"><%= notice %></div>
 
-<h1>Order Products</h1>
-
-<table>
-  <thead>
-    <tr>
-      <th>Order</th>
-      <th>Product</th>
-      <th>Product quantity</th>
-      <th colspan="3"></th>
-    </tr>
-  </thead>
-
-  <tbody>
-    <% @order_products.each do |order_product| %>
-      <tr>
-        <td><%= order_product.order %></td>
-        <td><%= order_product.product %></td>
-        <td><%= order_product.Product_quantity %></td>
-        <td><%= link_to 'Show', order_product %></td>
-        <td><%= link_to 'Edit', edit_order_product_path(order_product) %></td>
-        <td><%= link_to 'Destroy', order_product, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-      </tr>
-    <% end %>
-  </tbody>
-</table>
-
-<br>
-
-<%= link_to 'New Order Product', new_order_product_path %>
+<section class="cart_area">
+      <div class="container">
+          <div class="cart_inner">
+              <div class="table-responsive">
+                  <table class="table">
+                      <thead>
+                          <tr>
+                              <th scope="col">Order Id</th>
+                              <th scope="col">Date</th>
+                              <th scope="col">State</th>
+                              <th scope="col">Options</th>
+                          </tr>
+                      </thead>
+                      <tbody>
+                        <% @order_products.each do |order_product|%>
+                          <% if @products.ids.include?(order_product.product.id) && order_product.order.state != "cart"%>
+                            <tr>
+                                <td>
+                                    <div class="media">
+                                        <div class="d-flex">
+                                        </div>
+                                        <div class="media-body">
+                                            <p><%= order_product.order.id %></p>
+                                        </div>
+                                    </div>
+                                </td>
+                                <td>
+                                    <h5><%= order_product.order.order_date %></h5>
+                                </td>
+                                <td>
+                                    <h5><%= order_product.order.state %></h5>
+                                </td>
+                                <td>
+                                    <%= link_to "Show", order_path(order_product.order.id), class: "genric-btn info-border circle arrow small"%>
+                                    <%= link_to "Edit", edit_order_path(order_product.order.id), class: "genric-btn info-border circle arrow small"%>
+                                </td>
+                            </tr>
+                          <% end %>
+                        <% end %>
+                      </tbody>
+                  </table>
+              </div>
+          </div>
+      </div>
+  </section>
