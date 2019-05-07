@@ -4,7 +4,7 @@
 			<nav class="navbar navbar-expand-lg navbar-light main_box">
 				<div class="container">
 					<!-- Brand and toggle get grouped for better mobile display -->
-					<a class="navbar-brand logo_h" href="index.html"><%= image_tag "logo.png" %></a>
+					<a class="navbar-brand logo_h btn-link" href="/"><%= image_tag "logo.png" %></a>
 					<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
 					 aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
 						<span class="icon-bar"></span>
@@ -21,7 +21,7 @@
 							</li>
 							<li class="nav-item">
 								<% if current_user %>
-									<%= link_to current_user.username, root_path, class:"nav-link"%>
+									<%= link_to current_user.username, root_path, class:"nav-link btn-link"%>
 								<% else %>
 									<%= link_to "Home", root_path, class:"nav-link"%>
 								<% end %>
