@@ -2,7 +2,7 @@ class Coupon < ApplicationRecord
     DISCOUNT_OPTIONS = %w(persentage fixed)
     validates :code, presence: true,uniqueness: true
     validates :expiration_date, allow_nil: true,uniqueness: true
-    validates :usage_number, allow_nil: true, numericality: { only_integer: true ,greater_than:0}
+    validates :usage_number, allow_nil: true, numericality: { only_integer: true ,greater_than:-1}
     validate  :expiration_date_xor_usage_number
     validates :discount_type,presence: true, :inclusion => {:in =>  DISCOUNT_OPTIONS}
     validates :discount_amount, numericality: { only_integer: true ,greater_than:0}
@@ -33,6 +33,7 @@ class Coupon < ApplicationRecord
       end
         return new_amount    
     end
+    
   private
     def  expiration_date_xor_usage_number
       if expiration_date.blank? and usage_number.blank?

@@ -89,7 +89,32 @@ class OrdersController < ApplicationController
       format.json { head :no_content }
     end
   end
-
+  def check_out
+   @order=Order.find_by(id: params[:id])
+   @total_price=@total_after_discount=calculate_products_total(@order)
+   @with_coupon=false
+   if((params[:submit_coupon]!="") && Coupon.isValid(params[:submit_coupon]))
+      if(!UserCoupon.taken_before(current_user.id,params[:submit_coupon]))
+        @total_after_discount=Coupon.after_discount(@total_price,params[:submit_coupon])
+        @with_coupon=true
+      end
+   end
+   if( @with_coupon)
+      @coupon=Coupon.find_by(code: params[:submit_coupon])
+      @order.coupon_id=@coupon.id
+         if(@coupon.usage_number)
+           @coupon.decrement(:usage_number, 1)
+           @coupon.save
+         end
+    end
+   @order.order_date=Time.now 
+   @order.address=params[:address]
+   @order.total_price=@total_price
+   @order.total_price_after_discount=@total_after_discount
+   @order.state="pending"
+   @order.save
+   redirect_to "/orders"
+  end 
   def remove_product
     @order_product[0].destroy
     redirect_to order_path(@order_product[0].order_id)

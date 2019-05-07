@@ -39,7 +39,7 @@ Rails.application.routes.draw do
   post '/orders/:id/apply_coupon', to:'orders#apply_coupon'
 
   # post 'products', to: 'products#add_to_cart'
-
+  post "/orders/:id/check_out" ,to: 'orders#check_out'
   
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 end

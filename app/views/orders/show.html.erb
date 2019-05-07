@@ -3,7 +3,11 @@
     <div class="container">
         <div class="breadcrumb-banner d-flex flex-wrap align-items-center justify-content-end">
             <div class="col-first">
-                <h1>Shopping Cart</h1>
+                     <% if @status == "cart"  %>
+                            <h1>Shopping Cart</h1>
+                      <% elsif !@orders  %> 
+                              <h1>Order</h1>   
+                      <%end%>    
                 <nav class="d-flex align-items-center">
                     <a href="index.html">Home<span class="lnr lnr-arrow-right"></span></a>
                     <a href="category.html">Cart</a>
@@ -96,7 +100,7 @@
                                         <%= text_field_tag 'coupon_code' , nil, class: "form-control", placeholder: "Coupon Code" %>
                                         <%= submit_tag("Apply", :class => "primary-btn") %>
                                     <%end%>
-
+                                    <h4 id="error_message" class="text-danger m-3"></h4>
                                 </div>
                                 <p> <%= debug @p %></p>
                                 <br>
@@ -105,7 +109,7 @@
                             <td></td>
                         </tr>
 
-                        <%= form_tag(controller: "orders", action: "show", method: "post") do %>
+                       <%=form_tag("/orders/#{@order.id}/check_out", id: 'check_out' ) do%>
                         <tr>
                             <td></td>
                             <td></td>
@@ -185,7 +189,7 @@
 
                             <td>
                                 <div class="shipping_box">
-                                    <textarea rows="4" col="50"></textarea>
+                                     <%= text_field_tag 'address' , nil, class: "form-control", placeholder: "Address" %>
                                 </div>
                             </td>
                         </tr>
@@ -200,7 +204,8 @@
                                     <a>
                                         <%= link_to 'Continue Shopping', products_path, class:"gray_btn" %>
                                     </a>
-                                    <%= submit_tag("Proceed to checkout", :class=>"primary-btn")%>
+                                     <%= hidden_field_tag 'submit_coupon', '' %>
+                                     <%= submit_tag("Proceed to checkout", :class=>"primary-btn")%>
                                     <%# <a class="primary-btn" href="#">Proceed to checkout</a> %>
                                 </div>
                             </td>
@@ -254,16 +259,27 @@
   $(document).ready(function(){
     $("form#apply_coupon").on('ajax:success', function(event, data, status, xhr) {
        let quantity=document.getElementById("discount")
-    //    quantity.value=event.detail[0]
-        quantity.innerHTML = event.detail[0]
-        alert("coupon applied"+event.detail[0])
-        console.log(event.detail[0])
+       let error=document.getElementById("error_message")
+        if(event.detail[0])
+        { quantity.innerHTML = event.detail[0]
+          error.innerHTML=""
+        }
+        else
+        { error.innerHTML="Invalid Coupon"}    
+       
 
     });
     $("form#apply_coupon").on('ajax:error', function(event, xhr, status, error) {
       alert("some thing happened wrong please try later");
     });
-
+     $('#check_out').submit(function() {
+        let coupon=document.getElementById("coupon_code")
+        if(coupon)
+        { let submit_coupon=document.getElementById("submit_coupon")
+          if(submit_coupon) { submit_coupon.value=coupon.value }   
+        }
+       
+     });
     // .... 
   })
 </script>
