@@ -26,6 +26,8 @@ Rails.application.routes.draw do
   resources :stores
   devise_for :users
   root 'products#index'
+  post '/products/:id/addToCart' ,to: 'orders#add_to_cart'
+  post '/products/:id/removeFromCart' ,to: 'orders#removeFromCart'
   namespace :api do
     scope module: :v1 , path: 'v1'do
       # We are going to list our resources here
