@@ -2,7 +2,8 @@ require 'test_helper'
 
 class ProductsControllerTest < ActionDispatch::IntegrationTest
   setup do
-    @product = products(:one)
+    # @product = products(:one)
+    @product = Product.find(2)
   end
 
   test "should get index" do

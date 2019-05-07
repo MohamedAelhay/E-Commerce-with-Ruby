@@ -4,7 +4,7 @@
 			<nav class="navbar navbar-expand-lg navbar-light main_box">
 				<div class="container">
 					<!-- Brand and toggle get grouped for better mobile display -->
-					<a class="navbar-brand logo_h" href="index.html"><%= image_tag "logo.png" %></a>
+					<a class="navbar-brand logo_h btn-link" href="/"><%= image_tag "logo.png" %></a>
 					<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
 					 aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
 						<span class="icon-bar"></span>
@@ -21,7 +21,7 @@
 							</li>
 							<li class="nav-item">
 								<% if current_user %>
-									<%= link_to current_user.username, root_path, class:"nav-link"%>
+									<%= link_to current_user.username, root_path, class:"nav-link btn-link"%>
 								<% else %>
 									<%= link_to "Home", root_path, class:"nav-link"%>
 								<% end %>
@@ -31,7 +31,7 @@
 									<a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true"
 									aria-expanded="false"><%= current_user.store.name %></a>
 									<ul class="dropdown-menu"> 
-										<li class="nav-item"><%= link_to "Go To Shop", store_path(current_user.id), class:"nav-link"%></li>
+										<li class="nav-item"><%= link_to "Go To Shop", store_path(current_user.store.id), class:"nav-link"%></li>
 										<li class="nav-item"><a class="nav-link" href="single-product.html">Orders</a></li>
 										<%# <li class="nav-item"><a><%= link_to 'Shopping Cart', orders_path, class:"nav-link"</a></li> %>
 									</ul>
@@ -43,13 +43,14 @@
 								<ul class="dropdown-menu">
 									<% if current_user %>
 										<% if current_user.role_type == "buyer" %>
-											<li class="nav-item"><a class="nav-link" href="tracking.html">Tracking Orders</a></li>
+											<li class="nav-item"><%= link_to "Tracking Orders", orders_path, class:"nav-link"%></li>
 										<% end %>
 										<li class="nav-item"><%= link_to "Edit Account", edit_user_registration_path, class:"nav-link"%></li>
 										<li class="nav-item"><%= link_to "Sign out", destroy_user_session_path, class:"nav-link", method: "delete"%></li>
 									<% else %>
 										<li class="nav-item"><%= link_to "Login", new_user_session_path, class:"nav-link"%></li>
 										<li class="nav-item"><%= link_to "Sign Up", new_user_registration_path, class:"nav-link"%></li>
+										<li class="nav-item"><%= link_to "Admin Login", new_admin_user_session_path, class:"nav-link"%></li>
 									<% end %>
 								</ul>
 							</li>
