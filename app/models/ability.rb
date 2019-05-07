@@ -6,8 +6,9 @@ class Ability
 
     if user.role_type == "buyer"
       can [:read, :search, :filter], Product, is_deleted: false
-      can [:read, :create, :update, :destroy], Order, [user_id: user.id, state: "cart"]
-      can :read, Order, [user_id: user.id, state: !"cart" ]
+      can [:read, :create, :destroy], Order, [user_id: user.id, state: "cart"]
+      # can :read, Order, [user_id: user.id, state: !"cart" ]
+      # can :show, Order, user_id: user.id
       
     elsif user.role_type == "seller"
       can :read, Product, is_deleted: false
