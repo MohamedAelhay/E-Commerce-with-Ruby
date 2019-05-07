@@ -42,3 +42,6 @@ Now let's run the server
 ```bash
 rails s
 ```
+
+## API
+API link : http://localhost:3000/api/v1/products/1
