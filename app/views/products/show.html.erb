@@ -57,13 +57,14 @@
             <a class="icon_btn" href="#"><i class="lnr lnr lnr-heart"></i></a>
           </div>
           <div>
-            <a>
-              <%= link_to 'Edit', edit_product_path(@product), class:"gray_btn" %>
-            </a>
+            <% if can? :update, @product %>
+              <a>
+                <%= link_to 'Edit', edit_product_path(@product), class:"gray_btn" %>
+              </a>
+            <% end %>
             <a>
               <%= link_to 'Back', products_path, class:"gray_btn" %>
             </a>
-
           </div>
         </div>
       </div>
