@@ -55,23 +55,21 @@
                                     <h6><%= product.price %></h6>
                                 </div>
                                 <div class="prd-bottom">
-        
-                                    <a href="" class="social-info">
+                                    <div href="" class="social-info">
                                         <span class="ti-bag"></span>
-                                        <p class="hover-text">add to bag</p>
-                                    </a>
-                                    <a href="" class="social-info">
+                                        <%=form_tag("/products/#{product.id}/addToCart", remote: true, 'data-type' => :json,id: 'addToCart' ) do%>
+                                                              <%= submit_tag("add to cart ", :class => "hover-text btn-link") %>
+                                                        <%end%>
+                                    </div>
+                                    <div href="" class="social-info">
                                         <span class="lnr lnr-heart"></span>
                                         <p class="hover-text">Wishlist</p>
-                                    </a>
-                                    <a href="" class="social-info">
-                                        <span class="lnr lnr-sync"></span>
-                                        <p class="hover-text">compare</p>
-                                    </a>
-                                    <a href="" class="social-info">
+                                    </div>
+                                        <div class="social-info">
                                         <span class="lnr lnr-move"></span>
-                                        <p class="hover-text">view more</p>
-                                    </a>
+                                        <p class="hover-text">
+                                        <%= link_to 'view more', product_path(product)%></p>
+                                    </div>
                                 </div>
                             </div>
                         </div>

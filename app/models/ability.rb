@@ -6,14 +6,24 @@ class Ability
 
     if user.role_type == "buyer"
       can [:read, :search, :filter], Product, is_deleted: false
-      can [:read, :create, :destroy], Order, [user_id: user.id, state: "cart"]
-      # can :read, Order, [user_id: user.id, state: !"cart" ]
-      # can :show, Order, user_id: user.id
+      can [:read, :create, :destroy], Order, user_id: user.id
+      cannot :read, Order, {:user_id => user.id, :state => "cart"}
+      cannot :read, Order, user_id: !user.id
       
     elsif user.role_type == "seller"
       can :read, Product, is_deleted: false
       can :create, Product
       can [:read, :manage], Store, user_id: user.id
+      @store = Store.find_by(user_id: user.id)
+      @products = Product.where(store_id: user.id)
+      
+      can :update, Order do |order| 
+        if order.state != "cart"
+          order.products.each do |product| 
+            @products.include?(product)
+          end
+        end
+      end 
 
       can [:update, :destroy], Product do |pro|
         pro.store.user_id == user.id

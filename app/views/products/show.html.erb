@@ -114,12 +114,12 @@
                 <div class="box_total">
                   <h5>Overall</h5>
                   <h4>4.0</h4>
-                  <h6>(03 Reviews)</h6>
+                  <h6>(<%= @product.rate_reviews.length %> Reviews)</h6>
                 </div>
               </div>
               <div class="col-6">
                 <div class="rating_list">
-                  <h3>Based on 3 Reviews</h3>
+                  <h3>Based on <%= @product.rate_reviews.length %> Reviews</h3>
                   <ul class="list">
                     <li><a href="#">5 Star <i class="fa fa-star"></i><i class="fa fa-star"></i><i
                           class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i> 01</a></li>
@@ -136,18 +136,18 @@
               </div>
             </div>
             <div class="review_list">
-              <% @product.rate_reviews.each do |product|%>
+              <% @product.rate_reviews.each do |rate_review|%>
               <div class="review_item">
                 <div class="media">
                   <div class="d-flex">
                     
                   </div>
                   <div class="media-body">
-                    <h4> <%= product.user.username %> </h4>
-                    <i class="fa fa-star"> <%= product.rate%> </i>
+                    <h4> <%= rate_review.user.username %> </h4>
+                    <i class="fa fa-star"> <%= rate_review.rate%> </i>
                   </div>
                 </div>
-                <p> <%= product.review %> </p>
+                <p> <%= rate_review.review %> </p>
               </div>
               <% end %>
 
