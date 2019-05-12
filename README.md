@@ -1,24 +1,47 @@
-# README
+# EOR
+E-commerce using Ruby on Rails
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+## Table of contents
+* [System Dependencies](#system-dependencies)
+* [Getting Started](#getting-started)
+* [Database Creation](#database-creation)
+* [Database Initialization](#database-initialization)
+* [Start](#start)
 
-Things you may want to cover:
 
-* Ruby version
 
-* System dependencies
+## System dependencies
+* ActiveAdmin.
+* CanCanCan.
+* Devise.
+* Bootstrap-rubygem.
 
-* Configuration
 
-* Database creation
+## Getting Started
 
-* Database initialization
+```bash
+bundle install
+```
+## Database Creation
 
-* How to run the test suite
+* Create Database in mysql
+* Rename 'database.yml.example' to 'database.yml'
+* Change database name and password
 
-* Services (job queues, cache servers, search engines, etc.)
+## Database Initialization
 
-* Deployment instructions
+Now run the seeder using this command
 
-* ...
+```bash
+rails db:seed
+```
+## Start 
+
+Now let's run the server
+
+```bash
+rails s
+```
+
+## API
+API link : http://localhost:3000/api/v1/products/1

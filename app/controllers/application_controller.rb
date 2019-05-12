@@ -1,6 +1,7 @@
 class ApplicationController < ActionController::Base
     protect_from_forgery with: :exception
     before_action :configure_permitted_parameters, if: :devise_controller?
+    
     rescue_from CanCan::AccessDenied do |exception|
       respond_to do |format|
         format.json { head :forbidden, content_type: 'text/html' }
@@ -10,13 +11,20 @@ class ApplicationController < ActionController::Base
     end
 
     def after_sign_in_path_for(resource)
-      if current_user.role_type == "seller"
+
+      if current_admin_user
+        admin_dashboard_path
+      elsif current_user.role_type == "seller" 
         store_path(current_user.store.id)
       elsif current_user.role_type == "buyer"
         root_path
       else
         root_path
       end
+    end
+
+    def after_sign_up_path_for(resource)
+      root_path
     end
     
     protected
