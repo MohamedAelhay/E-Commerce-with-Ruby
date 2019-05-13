@@ -1,3 +1,7 @@
+
+<div class="alert alert-success" role="alert" id="messageBox" style="display:none;">
+   Added successfully to cart
+</div>
 <div class="container">
     <div class="row">
         <div class="col-xl-3 col-lg-4 col-md-5">
@@ -156,3 +160,20 @@
 	</div>
   <% end %>
 </section>
+<script>
+  $(document).ready(function(){
+    $("form#addToCart").on('ajax:success', function(event, data, status, xhr) {
+       let cartIcon=document.getElementById("cart-icon")
+        if(cartIcon===null)
+           document.location.reload();
+       $("#messageBox").show();
+       $("#messageBox").delay(1000).fadeOut('slow');
+    });
+
+    $("form#addToCart").on('ajax:error', function(event, xhr, status, error) {
+     //location.reload();
+    });
+
+    // .... 
+  })
+</script>
